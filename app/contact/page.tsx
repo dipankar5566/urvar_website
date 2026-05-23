@@ -10,7 +10,8 @@ export default function ContactPage() {
     <>
       <section className="bg-urvar-dark py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">{t.contact.heading}</h1>
+          <h1 className="text-4xl font-bold text-white mb-3">{t.contact.heading}</h1>
+          <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-4" />
           <p className="text-green-200 text-lg max-w-xl mx-auto">{t.contact.sub}</p>
         </div>
       </section>
@@ -27,7 +28,7 @@ export default function ContactPage() {
             {/* Info */}
             <div className="space-y-8">
               {/* Address */}
-              <div className="bg-urvar-light rounded-2xl p-6">
+              <div className="bg-urvar-light border-l-4 border-urvar-green rounded-2xl p-8">
                 <h3 className="font-bold text-urvar-dark mb-4 flex items-center gap-2">
                   <span>📍</span> {t.contact.address_heading}
                 </h3>
@@ -40,7 +41,7 @@ export default function ContactPage() {
               </div>
 
               {/* Phone */}
-              <div className="bg-urvar-light rounded-2xl p-6">
+              <div className="bg-urvar-light border-l-4 border-urvar-green rounded-2xl p-8">
                 <h3 className="font-bold text-urvar-dark mb-4 flex items-center gap-2">
                   <span>📞</span> {t.contact.or_call}
                 </h3>
@@ -58,6 +59,19 @@ export default function ContactPage() {
                     +91 83358 25566
                   </a>
                 </div>
+              </div>
+
+              {/* Email */}
+              <div className="bg-urvar-light border-l-4 border-urvar-green rounded-2xl p-8">
+                <h3 className="font-bold text-urvar-dark mb-4 flex items-center gap-2">
+                  <span>✉️</span> Email Us
+                </h3>
+                <a
+                  href="mailto:mail.bharatorganics@gmail.com"
+                  className="text-urvar-green font-semibold hover:underline break-all"
+                >
+                  mail.bharatorganics@gmail.com
+                </a>
               </div>
 
               {/* WhatsApp */}

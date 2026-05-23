@@ -8,7 +8,7 @@ export default function Footer() {
   const { t } = useLang();
 
   return (
-    <footer className="bg-urvar-dark text-white">
+    <footer className="bg-urvar-dark text-white border-t-4 border-urvar-green">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Brand */}
@@ -23,7 +23,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="font-semibold text-green-300 mb-4">{t.footer.quick_links}</h3>
+            <h3 className="font-semibold text-green-400 mb-4">{t.footer.quick_links}</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li><Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors">{t.nav.about}</Link></li>
@@ -34,7 +34,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-green-300 mb-4">{t.footer.contact_info}</h3>
+            <h3 className="font-semibold text-green-400 mb-4">{t.footer.contact_info}</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <a href="tel:+919035708943" className="hover:text-white transition-colors">

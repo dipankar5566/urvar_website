@@ -24,8 +24,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Director photo placeholder */}
             <div className="bg-urvar-light rounded-2xl p-8 flex flex-col items-center text-center">
-              <div className="w-32 h-32 rounded-full bg-urvar-dark flex items-center justify-center mb-4 text-5xl">
-                👨‍💼
+              <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 border-4 border-urvar-green shadow-lg">
+                <Image
+                  src="/images/director.png"
+                  alt="Shri. Ratanlal Chowdhury"
+                  width={128}
+                  height={128}
+                  className="object-cover object-center w-full h-full"
+                />
               </div>
               <h3 className="font-bold text-urvar-dark text-xl">Shri. Ratanlal Chowdhury</h3>
               <p className="text-urvar-green font-medium text-sm mt-1">{t.about.director_title}</p>
@@ -38,9 +44,10 @@ export default function AboutPage() {
               <span className="text-urvar-green font-semibold text-sm uppercase tracking-wide">
                 {t.about.company_statement}
               </span>
-              <h2 className="text-3xl font-bold text-urvar-dark mt-2 mb-4">
+              <h2 className="text-3xl font-bold text-urvar-dark mt-2 mb-2">
                 Urvar Natural Private Limited
               </h2>
+              <div className="w-12 h-1 bg-urvar-green rounded-full mb-4" />
               <p className="text-gray-600 leading-relaxed mb-6">
                 Urvar Natural Private Limited is a pioneering agri-input company dedicated to the
                 advancement of sustainable and organic farming. Founded in 2023 and headquartered in
@@ -82,7 +89,8 @@ export default function AboutPage() {
       {/* Values */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-10">{t.about.values_heading}</h2>
+          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-3">{t.about.values_heading}</h2>
+          <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               { emoji: "🌱", title: "Organic", desc: "All products made from natural, organic sources — no harmful chemicals." },
@@ -115,7 +123,8 @@ export default function AboutPage() {
       {/* Certifications */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-10">{t.about.certifications}</h2>
+          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-3">{t.about.certifications}</h2>
+          <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-10" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border-2 border-urvar-green rounded-2xl p-6 flex gap-4 items-start">
               <span className="text-3xl">🏛️</span>

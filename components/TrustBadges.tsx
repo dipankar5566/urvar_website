@@ -49,11 +49,11 @@ export default function TrustBadges() {
   const { t } = useLang();
 
   return (
-    <section className="bg-urvar-light border-y border-green-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
+    <section className="bg-gradient-to-b from-white to-urvar-light border-y border-green-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
           {badges.map((badge) => (
-            <div key={badge.key} className="flex items-center gap-2.5 text-urvar-dark">
+            <div key={badge.key} className="flex items-center gap-2.5 bg-white rounded-xl px-5 py-4 shadow-sm border border-gray-100 text-urvar-dark">
               <span className="text-urvar-green">{badge.icon}</span>
               <span className="font-semibold text-sm sm:text-base">{t.trust[badge.key]}</span>
             </div>

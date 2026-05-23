@@ -16,8 +16,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const { t } = useLang();
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group flex flex-col">
-      <div className="relative h-52 bg-gray-50">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:border-urvar-green/30 transition-all duration-200 group flex flex-col">
+      <div className="relative h-52 bg-gradient-to-b from-gray-50 to-gray-100/50">
         <Image
           src={product.image}
           alt={product.name}

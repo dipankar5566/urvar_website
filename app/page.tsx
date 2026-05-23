@@ -23,6 +23,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-urvar-dark mb-3">{t.home.products_heading}</h2>
+            <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-4" />
             <p className="text-gray-500">{t.home.products_sub}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -57,7 +58,8 @@ export default function HomePage() {
             </div>
             <div>
               <span className="text-urvar-green font-semibold text-sm uppercase tracking-wide">About Urvar</span>
-              <h2 className="text-3xl font-bold text-urvar-dark mt-2 mb-4">{t.home.about_heading}</h2>
+              <h2 className="text-3xl font-bold text-urvar-dark mt-2 mb-2">{t.home.about_heading}</h2>
+              <div className="w-12 h-1 bg-urvar-green rounded-full mb-4" />
               <p className="text-gray-600 leading-relaxed mb-6">{t.home.about_body}</p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {["Organic", "Eco-Friendly", "Sustainable"].map((tag) => (

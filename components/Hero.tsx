@@ -9,21 +9,29 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-urvar-dark">
-      {/* Background farm image with overlay */}
+      {/* Background farm image */}
       <div className="absolute inset-0">
         <Image
           src="/images/farm2.jpg"
           alt="Urvar farm"
           fill
-          className="object-cover opacity-25"
+          className="object-cover opacity-30"
           priority
         />
+        {/* Layered gradient: dark top, green tint at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-urvar-dark/80 via-urvar-dark/50 to-urvar-dark/80" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-urvar-dark to-transparent" />
       </div>
 
-      {/* Decorative leaf pattern */}
-      <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-        <svg viewBox="0 0 200 200" className="w-full h-full fill-white">
-          <path d="M100 10 C 150 10, 190 50, 190 100 C 190 150, 150 190, 100 190 C 50 190, 10 150, 10 100 C 10 50, 50 10, 100 10 Z" />
+      {/* Decorative circle */}
+      <div className="absolute top-0 right-0 w-72 h-72 opacity-5">
+        <svg viewBox="0 0 200 200" className="w-full h-full fill-urvar-green">
+          <circle cx="100" cy="100" r="90" />
+        </svg>
+      </div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 opacity-5">
+        <svg viewBox="0 0 200 200" className="w-full h-full fill-urvar-green">
+          <circle cx="100" cy="100" r="90" />
         </svg>
       </div>
 
@@ -31,7 +39,7 @@ export default function Hero() {
         <div className="max-w-2xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-urvar-green/20 border border-urvar-green/40 rounded-full px-4 py-1.5 mb-6">
-            <span className="w-2 h-2 rounded-full bg-urvar-green"></span>
+            <span className="w-2 h-2 rounded-full bg-urvar-green animate-pulse"></span>
             <span className="text-green-300 text-sm font-medium">Urvar Natural Pvt. Ltd.</span>
           </div>
 
@@ -46,7 +54,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/products"
-              className="inline-flex items-center justify-center gap-2 bg-urvar-green hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-urvar-green hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               {t.hero.cta_products}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,21 +63,21 @@ export default function Hero() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-urvar-dark font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/70 text-white hover:bg-white hover:text-urvar-dark font-semibold px-8 py-4 rounded-lg transition-all duration-200 text-lg hover:-translate-y-0.5"
             >
               {t.hero.cta_contact}
             </Link>
           </div>
         </div>
 
-        {/* Stats row */}
-        <div className="mt-16 flex flex-wrap gap-8">
+        {/* Stats row — glassmorphism card */}
+        <div className="mt-16 inline-flex flex-wrap gap-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-6">
           {[
             { value: "2023", label: "Founded" },
             { value: "8+", label: "Products" },
             { value: "WB", label: "West Bengal" },
-          ].map((s) => (
-            <div key={s.label} className="text-white">
+          ].map((s, i) => (
+            <div key={s.label} className={`text-white ${i > 0 ? "pl-8 border-l border-white/20" : ""}`}>
               <p className="text-3xl font-bold text-urvar-green">{s.value}</p>
               <p className="text-green-300 text-sm">{s.label}</p>
             </div>

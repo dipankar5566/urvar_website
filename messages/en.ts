@@ -1,0 +1,95 @@
+const en = {
+  nav: {
+    home: "Home",
+    about: "About Us",
+    products: "Products",
+    contact: "Contact",
+  },
+  hero: {
+    tagline: "Supporting Crops from Root to Harvest",
+    subtitle: "Science-driven organic fertilizers trusted by farmers across West Bengal",
+    cta_products: "View Products",
+    cta_contact: "Contact Us",
+  },
+  trust: {
+    msme: "MSME Certified",
+    startup: "Startup India",
+    organic: "Organic",
+    eco: "Eco-Friendly",
+    sustainable: "Sustainable",
+  },
+  home: {
+    products_heading: "Our Products",
+    products_sub: "Organic solutions for every stage of your crop's growth",
+    about_heading: "About Urvar Natural",
+    about_body:
+      "Founded in 2023 and based in West Bengal, Urvar Natural Pvt. Ltd. is committed to restoring soil health through high-quality organic fertilizers and bio-stimulants. We empower farmers with eco-conscious products that deliver measurable results.",
+    about_cta: "Learn More",
+    crop_heading: "Supporting Every Stage of Growth",
+    crop_sub: "Urvar products are designed to support your crops from seed to harvest",
+    contact_heading: "Get In Touch",
+    contact_sub: "Have a question or want to place an order? Reach out to us.",
+    contact_cta: "Contact Us",
+  },
+  about: {
+    heading: "About Urvar Natural",
+    company_statement: "Company Statement",
+    mission_heading: "Our Mission",
+    mission_body:
+      "To empower farmers with eco-friendly, high-performance organic solutions that improve livelihoods and preserve nature for future generations.",
+    vision_heading: "Our Vision",
+    vision_body:
+      "To be the most trusted global brand in sustainable agriculture, driven by innovation, quality, and the prosperity of the farming community.",
+    director_title: "Director, Urvar Natural Pvt. Ltd.",
+    director_quote:
+      "We believe that sustainable agriculture is not just a practice but a way of life. Our commitment to organic farming is driven by the vision of a healthier, greener, and more prosperous future for our farmers, our communities, and our planet.",
+    certifications: "Our Certifications",
+    values_heading: "Our Values",
+  },
+  products: {
+    heading: "Our Products",
+    sub: "High-quality organic fertilizers and bio-stimulants for sustainable farming",
+    all: "All",
+    filter_organic: "Organic Manures",
+    filter_phosphate: "Phosphate Fertilizers",
+    filter_biostim: "Bio-Stimulants",
+    filter_micro: "Micronutrients",
+    learn_more: "Learn More",
+  },
+  product_detail: {
+    benefits: "Key Benefits",
+    nutrients: "Nutrient Profile",
+    dosage: "Recommended Dosage",
+    parameter: "Parameter",
+    value: "Typical Value",
+    crop: "Crop Type",
+    dose: "Dose per Katha",
+    method: "Application Method",
+    back: "← Back to Products",
+    cta_heading: "Interested in {name}?",
+    cta_sub: "Contact us for pricing, availability, and bulk orders.",
+  },
+  contact: {
+    heading: "Contact Us",
+    sub: "We'd love to hear from you. Reach out for inquiries or orders.",
+    name: "Your Name",
+    phone: "Phone Number",
+    message: "Your Message",
+    submit: "Send Message",
+    sending: "Sending...",
+    success: "Message sent! We'll get back to you soon.",
+    error: "Something went wrong. Please try again.",
+    or_call: "Or call us directly",
+    whatsapp: "WhatsApp Us",
+    address_heading: "Our Address",
+  },
+  footer: {
+    tagline: "Urvar know the needs of the Plants",
+    quick_links: "Quick Links",
+    contact_info: "Contact Info",
+    copyright: "© 2025 Urvar Natural Pvt. Ltd. All rights reserved.",
+  },
+};
+
+export default en;
+export type Messages = typeof en;

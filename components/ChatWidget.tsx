@@ -18,6 +18,21 @@ export default function ChatWidget() {
   const [inputValue, setInputValue] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Native DOM listeners bypass React's synthetic event system on mobile
+  useEffect(() => {
+    if (isOpen) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+    const open = () => setIsOpen(true);
+    btn.addEventListener("touchstart", open, { passive: true });
+    btn.addEventListener("click", open);
+    return () => {
+      btn.removeEventListener("touchstart", open);
+      btn.removeEventListener("click", open);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -80,7 +95,7 @@ export default function ChatWidget() {
     <>
       {isOpen ? (
         /* Chat panel */
-        <div className="fixed top-20 right-4 z-[60] flex flex-col w-[calc(100vw-2rem)] max-w-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+        <div className="fixed bottom-[10.5rem] right-4 z-[9999] flex flex-col w-[calc(100vw-2rem)] max-w-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
           {/* Header */}
           <div className="bg-urvar-dark px-4 py-3 flex items-center justify-between">
             <div>
@@ -178,28 +193,26 @@ export default function ChatWidget() {
         </div>
       ) : (
         /* Floating chat button */
-        <div className="fixed top-20 right-6 z-50">
-          <span className="absolute inset-0 rounded-full bg-urvar-green animate-ping opacity-20" />
-          <button
-            onClick={() => setIsOpen(true)}
-            aria-label={t.chat.button_title}
-            title={t.chat.button_title}
-            className="relative z-10 flex items-center justify-center w-14 h-14 rounded-full shadow-lg bg-urvar-dark hover:bg-urvar-green transition-colors"
+        <button
+          ref={buttonRef}
+          aria-label={t.chat.button_title}
+          title={t.chat.button_title}
+          style={{ touchAction: "manipulation" }}
+          className="fixed bottom-24 right-6 z-[9999] w-14 h-14 rounded-full shadow-lg bg-urvar-dark hover:bg-urvar-green active:bg-urvar-green active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-7 h-7"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-7 h-7"
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-          </button>
-        </div>
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </button>
       )}
     </>
   );

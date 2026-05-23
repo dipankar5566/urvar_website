@@ -89,6 +89,15 @@ const en = {
     contact_info: "Contact Info",
     copyright: "© 2025 Urvar Natural Pvt. Ltd. All rights reserved.",
   },
+  chat: {
+    button_title: "Chat with Kisan Saathi",
+    placeholder: "Ask about farming, crops, soil...",
+    send: "Send",
+    welcome: "Hello! I'm Kisan Saathi 🌾, your farming assistant. Ask me about soil health, crop stages, fertilizers, or Urvar products!",
+    error: "Something went wrong. Please try again.",
+    title: "Kisan Saathi",
+    subtitle: "Your farming assistant",
+  },
 };
 
 export default en;

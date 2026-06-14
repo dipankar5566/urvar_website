@@ -33,10 +33,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.svg" alt="Urvar Logo" width={44} height={52} priority />
-            <div className="leading-tight">
-              <p className="font-bold text-lg text-urvar-dark tracking-wide font-[family-name:var(--font-raleway)]">URVAR</p>
-              <p className="text-xs text-gray-500 hidden sm:block">Natural Pvt. Ltd.</p>
-            </div>
+            <p className="font-bold text-2xl text-urvar-dark tracking-wide font-[family-name:var(--font-raleway)]">URVAR</p>
           </Link>
 
           {/* Desktop nav */}

@@ -51,7 +51,7 @@ export default function CropClient({ slug }: { slug: string }) {
               <p className="text-urvar-light/90 text-lg leading-relaxed">{intro}</p>
             </div>
             <div className="relative h-64 rounded-2xl overflow-hidden">
-              <Image src={crop.image} alt={name} fill className="object-cover" priority />
+              <Image src={crop.image} alt={name} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function CropClient({ slug }: { slug: string }) {
                         className="group flex items-center gap-3 bg-white border border-neutral-200 rounded-xl p-3 shadow-e1 hover:shadow-e2 hover:-translate-y-0.5 transition-all"
                       >
                         <div className="relative w-12 h-12 shrink-0 bg-neutral-50 rounded-lg overflow-hidden">
-                          <Image src={p.image} alt={p.name} fill className="object-contain p-1" />
+                          <Image src={p.image} alt={p.name} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-contain p-1" />
                         </div>
                         <div className="min-w-0">
                           <p className="font-semibold text-sm text-urvar-dark leading-snug truncate">{p.name}</p>

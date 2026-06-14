@@ -27,7 +27,7 @@ export default function AboutPage() {
             <div className="bg-urvar-light rounded-2xl p-8 flex flex-col items-center text-center">
               <div className="w-32 h-32 rounded-xl overflow-hidden mb-4 border-4 border-urvar-green shadow-lg">
                 <Image
-                  src="/images/director.png"
+                  src="/images/director.webp"
                   alt="Shri. Ratanlal Chowdhury"
                   width={128}
                   height={128}
@@ -114,7 +114,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {["/images/farm1.jpg", "/images/farm2.jpg", "/images/farm3.jpg"].map((src, i) => (
               <div key={i} className="relative h-52 rounded-xl overflow-hidden">
-                <Image src={src} alt={`Urvar farm ${i + 1}`} fill className="object-cover" />
+                <Image src={src} alt={`Urvar farm ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
               </div>
             ))}
           </div>

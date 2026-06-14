@@ -21,7 +21,7 @@ const products: Product[] = [
     description:
       "Urvar Enriched Vermicompost is a biologically activated organic manure fortified with essential nutrients and beneficial microbes. It enhances root proliferation, nutrient availability, and soil microbial density for long-term fertility improvement. Ideal for cereals, vegetables, fruits, and plantation crops.",
     category: "Organic Manures",
-    image: "/products/vermicompost.png",
+    image: "/products/vermicompost.webp",
     benefits: [
       "Enhances Soil Structure & Aeration – Improves soil porosity, aggregation, and water-holding capacity.",
       "Boosts Microbial Activity – Enriches beneficial soil microbes that improve nutrient cycling and soil vitality.",
@@ -53,7 +53,7 @@ const products: Product[] = [
     description:
       "Urvar Cow Dung Manure (FYM) is naturally decomposed farmyard manure that enriches soil with organic matter and essential nutrients. It improves soil texture, moisture retention, and microbial activity for long-term soil fertility. Ideal for sustainable crop growth and improved yield quality across all crops.",
     category: "Organic Manures",
-    image: "/products/fym.png",
+    image: "/products/fym.webp",
     benefits: [
       "Improves Soil Fertility Naturally – Supplies essential nutrients and organic matter for sustained crop growth.",
       "Enhances Soil Structure & Moisture Retention – Increases water-holding capacity and reduces soil compaction.",
@@ -84,7 +84,7 @@ const products: Product[] = [
     description:
       "Urvar PROM is a fortified organic manure enriched with high available phosphorus to support vigorous root development and early crop establishment. It enhances nutrient solubility, improves soil biological activity, and increases phosphorus efficiency in the rhizosphere.",
     category: "Phosphate Fertilizers",
-    image: "/products/prom.png",
+    image: "/products/prom.webp",
     benefits: [
       "High Phosphorus Availability (P₂O₅ 16–20%) – Ensures strong root establishment and early crop vigor.",
       "Improves Flowering & Fruit Set – Enhances reproductive growth and reduces flower drop.",
@@ -114,7 +114,7 @@ const products: Product[] = [
     description:
       "Urvar PROM (Humic Based) is an advanced phosphorus-rich organic formulation designed to promote early flowering and stronger fruit set. Enriched with humic substances to enhance nutrient uptake and plant metabolism, it supports vigorous reproductive growth. Ideal for vegetables, fruits, and commercial crops.",
     category: "Phosphate Fertilizers",
-    image: "/products/prom-humic-flowering.png",
+    image: "/products/prom-humic-flowering.webp",
     benefits: [
       "Promotes Early & Uniform Flowering – Stimulates reproductive growth for timely crop development.",
       "Enhances Fruit Set & Reduces Flower Drop – Improves crop retention and yield stability.",
@@ -146,7 +146,7 @@ const products: Product[] = [
     description:
       "Urvar PROM (Humic Enriched) is a high-phosphorus organic manure fortified with humic substances to enhance root strength and nutrient efficiency. It improves phosphorus availability in the soil, supports vigorous flowering, and promotes better fruit set for sustainable soil health.",
     category: "Phosphate Fertilizers",
-    image: "/products/prom-humic-enriched.png",
+    image: "/products/prom-humic-enriched.webp",
     benefits: [
       "High Available Phosphorus (P₂O₅ 16–20%) – Promotes strong root establishment and early crop vigor.",
       "Humic-Enriched Formula – Enhances nutrient absorption and improves soil nutrient efficiency.",
@@ -178,7 +178,7 @@ const products: Product[] = [
     description:
       "Urvar Humic Acid Liquid is a high-performance bio-stimulant formulated to enhance nutrient absorption and root development. It improves soil structure, increases nutrient efficiency, and strengthens plant stress tolerance. Ideal for boosting crop vigor, improving yield quality, and maximizing productivity.",
     category: "Bio-Stimulants",
-    image: "/products/humic-acid-liquid.png",
+    image: "/products/humic-acid-liquid.webp",
     benefits: [
       "Enhances Cation Exchange Capacity (CEC) – Improves soil nutrient-holding capacity and reduces nutrient leaching.",
       "Natural Chelating Action – Forms complexes with micronutrients, increasing their availability and uptake.",
@@ -207,7 +207,7 @@ const products: Product[] = [
     description:
       "Urvar Zinc EDTA 12% helps correct zinc deficiency and brings back healthy green color in crops. It supports better leaf growth, stronger plant development, and improved flowering and yield. Easy to dissolve and quick to absorb, it ensures visible crop improvement in a short time.",
     category: "Micronutrients",
-    image: "/products/zinc-edta.png",
+    image: "/products/zinc-edta.webp",
     benefits: [
       "Corrects Zinc Deficiency Quickly – Restores healthy green leaves and reduces yellowing (chlorosis).",
       "Improves Leaf Size & Plant Growth – Supports stronger stems and better crop development.",
@@ -233,7 +233,7 @@ const products: Product[] = [
     description:
       "Urvar Boron EDTA is a fully water-soluble micronutrient fertilizer designed to correct boron deficiency in crops. It supports proper flowering, pollen formation, and strong fruit development for better yield quality. Easy to mix and fast acting, it ensures healthier plants and improved crop productivity.",
     category: "Micronutrients",
-    image: "/products/boron-edta.png",
+    image: "/products/boron-edta.webp",
     benefits: [
       "Improves Flowering & Pollen Formation – Supports better fruit and seed setting.",
       "Reduces Flower & Fruit Drop – Enhances crop retention and yield stability.",

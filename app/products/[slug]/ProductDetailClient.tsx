@@ -53,7 +53,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <p className="text-urvar-light/90 text-lg leading-relaxed">{product.tagline}</p>
             </div>
             <div className="relative h-72 bg-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
-              <Image src={product.image} alt={product.name} fill className="object-contain p-6" priority />
+              <Image src={product.image} alt={product.name} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain p-6" priority />
             </div>
           </div>
         </div>

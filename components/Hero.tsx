@@ -15,6 +15,7 @@ export default function Hero() {
           src="/images/farm2.jpg"
           alt="Urvar farm"
           fill
+          sizes="100vw"
           className="object-cover opacity-30"
           priority
         />

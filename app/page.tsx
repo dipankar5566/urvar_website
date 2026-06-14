@@ -137,7 +137,7 @@ export default function HomePage() {
       <Section bg="earth">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-2xl overflow-hidden shadow-e2">
-            <Image src="/images/farm3.jpg" alt="Urvar farmers" fill className="object-cover" />
+            <Image src="/images/farm3.jpg" alt="Urvar farmers" fill sizes="100vw" className="object-cover" />
           </div>
           <div>
             <span className="text-urvar-green font-semibold text-sm uppercase tracking-wide">{t.nav.about}</span>

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://urvarnatural.com/sitemap.xml",
+    sitemap: "https://urvarindia.com/sitemap.xml",
   };
 }

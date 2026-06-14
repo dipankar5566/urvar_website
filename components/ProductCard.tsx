@@ -4,13 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 import type { Product } from "@/data/products";
-
-const categoryColors: Record<Product["category"], string> = {
-  "Organic Manures": "bg-amber-100 text-amber-800",
-  "Phosphate Fertilizers": "bg-yellow-100 text-yellow-800",
-  "Bio-Stimulants": "bg-blue-100 text-blue-800",
-  "Micronutrients": "bg-purple-100 text-purple-800",
-};
+import { categoryMeta } from "@/lib/categories";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { t } = useLang();
@@ -26,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
         />
       </div>
       <div className="p-5 flex flex-col flex-1">
-        <span className={`self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryColors[product.category]}`}>
+        <span className={`self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryMeta[product.category].badge}`}>
           {product.category}
         </span>
         <h3 className="font-bold text-urvar-dark text-lg leading-snug mb-1">{product.name}</h3>

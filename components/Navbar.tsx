@@ -22,6 +22,7 @@ export default function Navbar() {
     { href: "/", label: t.nav.home },
     { href: "/about", label: t.nav.about },
     { href: "/products", label: t.nav.products },
+    { href: "/crop-solutions", label: t.nav.crops },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -75,6 +76,13 @@ export default function Navbar() {
                 বাং
               </button>
             </div>
+            {/* Dealer CTA */}
+            <Link
+              href="/dealers/become-a-distributor"
+              className="bg-urvar-green hover:bg-urvar-dark text-white font-semibold text-sm px-5 py-2 rounded-full transition-colors"
+            >
+              {t.nav.dealer}
+            </Link>
           </div>
 
           {/* Mobile: lang + hamburger */}
@@ -126,6 +134,15 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <div className="px-6 py-4">
+            <Link
+              href="/dealers/become-a-distributor"
+              onClick={() => setOpen(false)}
+              className="block text-center bg-urvar-green hover:bg-urvar-dark text-white font-semibold px-5 py-3 rounded-full transition-colors"
+            >
+              {t.nav.dealer}
+            </Link>
+          </div>
         </div>
       )}
     </nav>

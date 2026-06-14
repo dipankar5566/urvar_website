@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import ProductCard from "@/components/ProductCard";
 import products from "@/data/products";
 import type { Product } from "@/data/products";
+import { allCategories, categoryMeta } from "@/lib/categories";
 
 type Category = Product["category"] | "All";
 
@@ -36,6 +38,29 @@ export default function ProductsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">{t.products.heading}</h1>
           <p className="text-green-200 text-lg max-w-xl mx-auto">{t.products.sub}</p>
+        </div>
+      </section>
+
+      {/* Browse by category */}
+      <section className="py-12 bg-urvar-light/40 border-b border-green-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl font-bold text-urvar-dark mb-6">{t.products.browse_by_category}</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {allCategories.map((cat) => (
+              <Link
+                key={cat}
+                href={`/products/category/${categoryMeta[cat].slug}`}
+                className="group bg-white border border-neutral-200 rounded-xl p-5 shadow-e1 hover:shadow-e2 hover:-translate-y-1 transition-all"
+              >
+                <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryMeta[cat].badge}`}>
+                  {t.products[categoryMeta[cat].nameKey]}
+                </span>
+                <p className="text-urvar-green font-semibold text-sm inline-flex items-center gap-1.5 group-hover:gap-3 transition-all">
+                  {t.products.view_category} →
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 
 export default function AboutPage() {
@@ -120,8 +121,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Certifications */}
+      {/* Explore Urvar */}
       <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-3">{t.about.explore_heading}</h2>
+          <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-4" />
+          <p className="text-gray-500 text-center max-w-xl mx-auto mb-10">{t.about.explore_sub}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <Link
+              href="/about/manufacturing-quality"
+              className="group bg-urvar-light rounded-2xl p-8 hover:shadow-e2 hover:-translate-y-1 transition-all border border-transparent hover:border-urvar-green/30"
+            >
+              <h3 className="font-bold text-urvar-dark text-xl">{t.mfg.heading}</h3>
+              <p className="text-gray-600 text-sm mt-2 leading-relaxed">{t.mfg.sub}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-urvar-green font-semibold text-sm group-hover:gap-3 transition-all">
+                {t.products.learn_more} →
+              </span>
+            </Link>
+            <Link
+              href="/certificates"
+              className="group bg-urvar-light rounded-2xl p-8 hover:shadow-e2 hover:-translate-y-1 transition-all border border-transparent hover:border-urvar-green/30"
+            >
+              <h3 className="font-bold text-urvar-dark text-xl">{t.certificates.heading}</h3>
+              <p className="text-gray-600 text-sm mt-2 leading-relaxed">{t.certificates.sub}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-urvar-green font-semibold text-sm group-hover:gap-3 transition-all">
+                {t.products.learn_more} →
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-urvar-dark text-center mb-3">{t.about.certifications}</h2>
           <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-10" />

@@ -30,5 +30,31 @@ export default async function ProductDetailPage({ params }: Props) {
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
 
-  return <ProductDetailClient slug={slug} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    category: product.category,
+    brand: {
+      "@type": "Brand",
+      name: "Urvar Natural",
+    },
+    additionalProperty: product.nutrients.map((n) => ({
+      "@type": "PropertyValue",
+      name: n.parameter,
+      value: n.value,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProductDetailClient slug={slug} />
+    </>
+  );
 }

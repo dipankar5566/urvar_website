@@ -5,7 +5,6 @@ import { LangProvider } from "@/context/LangContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatWidget from "@/components/ChatWidget";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -58,7 +57,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <ChatWidget />
         </LangProvider>
       </body>
     </html>

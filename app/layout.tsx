@@ -5,6 +5,7 @@ import { LangProvider } from "@/context/LangContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -18,6 +19,19 @@ export const metadata: Metadata = {
   description:
     "Urvar Natural Pvt. Ltd. provides science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity. Based in West Bengal, India.",
   keywords: "organic fertilizer, vermicompost, biofertilizer, PROM, humic acid, West Bengal, Urvar Natural",
+  alternates: {
+    canonical: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
+    description:
+      "Urvar Natural Pvt. Ltd. provides science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity.",
+    images: ["/logo.png"],
+  },
+  ...(process.env.GSC_VERIFICATION
+    ? { verification: { google: process.env.GSC_VERIFICATION } }
+    : {}),
 };
 
 const organizationJsonLd = {
@@ -52,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <GoogleAnalytics />
         <LangProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

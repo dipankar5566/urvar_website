@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Contact Us – Urvar Natural Pvt. Ltd.",
   description:
     "Get in touch with Urvar Natural for product inquiries, bulk orders, or dealer partnerships. Call, WhatsApp, or send us a message.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact Urvar Natural Pvt. Ltd.",
     description:

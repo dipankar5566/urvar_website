@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "FAQs – Urvar Natural Pvt. Ltd.",
   description:
     "Frequently asked questions about Urvar Natural's organic fertilizers, bio-stimulants and micronutrients — usage, dosage, dealership and delivery.",
+  alternates: {
+    canonical: "/faqs",
+  },
 };
 
 const faqJsonLd = {

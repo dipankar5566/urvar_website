@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Our Products – Urvar Natural Pvt. Ltd.",
   description:
     "Explore Urvar Natural's range of organic fertilizers and bio-stimulants — Vermicompost, PROM, Humic Acid, Zinc EDTA, Boron EDTA, and more for sustainable farming.",
+  alternates: {
+    canonical: "/products",
+  },
   openGraph: {
     title: "Organic Fertilizers & Bio-Stimulants – Urvar Natural",
     description:

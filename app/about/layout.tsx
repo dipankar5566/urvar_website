@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "About Us – Urvar Natural Pvt. Ltd.",
   description:
     "Learn about Urvar Natural Pvt. Ltd. — a West Bengal-based organic fertilizer company founded in 2023, dedicated to sustainable farming and soil health restoration.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About Urvar Natural Pvt. Ltd.",
     description:

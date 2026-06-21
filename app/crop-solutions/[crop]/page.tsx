@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${name} Crop Solution – Urvar Natural Pvt. Ltd.`,
     description: en.crops[crop.introKey],
+    alternates: {
+      canonical: `/crop-solutions/${slug}`,
+    },
   };
 }
 

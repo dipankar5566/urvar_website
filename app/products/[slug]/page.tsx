@@ -13,6 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${product.name} – Urvar Natural Pvt. Ltd.`,
     description: product.tagline,
+    alternates: {
+      canonical: `/products/${slug}`,
+    },
     openGraph: {
       title: `${product.name} – Urvar Natural`,
       description: product.description,

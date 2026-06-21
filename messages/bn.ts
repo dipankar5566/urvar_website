@@ -184,6 +184,9 @@ const bn: Messages = {
     cta_sub: "মূল্য, প্রাপ্যতা এবং বাল্ক অর্ডারের জন্য আমাদের সাথে যোগাযোগ করুন।",
     related: "সম্পর্কিত পণ্য",
     breadcrumb_products: "পণ্য",
+    test_report_heading: "ল্যাব টেস্ট রিপোর্ট",
+    test_report_sub: "একটি স্বতন্ত্র, ISO-সার্টিফাইড পরীক্ষাগার থেকে যাচাইকৃত পুষ্টি বিশ্লেষণ।",
+    test_report_cta: "রিপোর্ট দেখুন",
   },
   crops: {
     hub_heading: "ফসল সমাধান",

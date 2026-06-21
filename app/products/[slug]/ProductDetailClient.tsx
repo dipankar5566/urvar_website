@@ -104,6 +104,28 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             </div>
           </div>
 
+          {/* Lab Test Report */}
+          {product.testReportFile && (
+            <div className="bg-urvar-light rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6">
+              <div className="flex-shrink-0 w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl">
+                📄
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-urvar-dark text-lg">{t.product_detail.test_report_heading}</h3>
+                <p className="text-neutral-600 text-sm mt-1">{t.product_detail.test_report_sub}</p>
+              </div>
+              <Button
+                href={product.testReportFile}
+                variant="primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0"
+              >
+                {t.product_detail.test_report_cta}
+              </Button>
+            </div>
+          )}
+
           {/* Dosage */}
           <div>
             <h2 className="text-2xl font-bold text-urvar-dark mb-6">{t.product_detail.dosage}</h2>

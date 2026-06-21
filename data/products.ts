@@ -11,6 +11,7 @@ export interface Product {
   benefits: string[];
   nutrients: NutrientRow[];
   dosages: DosageRow[];
+  testReportFile?: string;
 }
 
 const products: Product[] = [
@@ -22,6 +23,7 @@ const products: Product[] = [
       "Urvar Enriched Vermicompost is a biologically activated organic manure fortified with essential nutrients and beneficial microbes. It enhances root proliferation, nutrient availability, and soil microbial density for long-term fertility improvement. Ideal for cereals, vegetables, fruits, and plantation crops.",
     category: "Organic Manures",
     image: "/products/vermicompost.webp",
+    testReportFile: "/downloads/vermicompost-test-report.pdf",
     benefits: [
       "Enhances Soil Structure & Aeration – Improves soil porosity, aggregation, and water-holding capacity.",
       "Boosts Microbial Activity – Enriches beneficial soil microbes that improve nutrient cycling and soil vitality.",

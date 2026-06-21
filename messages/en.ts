@@ -182,6 +182,9 @@ const en = {
     cta_sub: "Contact us for pricing, availability, and bulk orders.",
     related: "Related Products",
     breadcrumb_products: "Products",
+    test_report_heading: "Lab Test Report",
+    test_report_sub: "Verified nutrient analysis from an independent, ISO-certified laboratory.",
+    test_report_cta: "View Report",
   },
   crops: {
     hub_heading: "Crop Solutions",

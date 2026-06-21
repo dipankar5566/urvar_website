@@ -3,9 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
+import VideoEmbed from "@/components/VideoEmbed";
+import videos from "@/data/videos";
 
 export default function AboutPage() {
   const { t } = useLang();
+
+  const videoContent = [
+    { ...videos[0], title: t.about.video1_title, desc: t.about.video1_desc },
+    { ...videos[1], title: t.about.video2_title, desc: t.about.video2_desc },
+  ];
 
   return (
     <>
@@ -115,6 +122,24 @@ export default function AboutPage() {
             {["/images/farm1.jpg", "/images/farm2.jpg", "/images/farm3.jpg"].map((src, i) => (
               <div key={i} className="relative h-52 rounded-xl overflow-hidden">
                 <Image src={src} alt={`Urvar farm ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Watch Our Story */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-urvar-dark text-center mb-3">{t.about.videos_heading}</h2>
+          <div className="w-12 h-1 bg-urvar-green rounded-full mx-auto mt-3 mb-4" />
+          <p className="text-gray-500 text-center max-w-xl mx-auto mb-10">{t.about.videos_sub}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {videoContent.map((video, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                <VideoEmbed videoId={video.id} title={video.title} />
+                <h3 className="font-bold text-urvar-dark mt-4">{video.title}</h3>
+                <p className="text-gray-600 text-sm mt-1 leading-relaxed whitespace-pre-line">{video.desc}</p>
               </div>
             ))}
           </div>

@@ -26,3 +26,14 @@ Practical implications for any future change:
   request time.
 - `next/image` runs with `unoptimized: true` — no automatic AVIF/WebP
   conversion, images are served as-is.
+
+# Video embeds
+
+YouTube videos (e.g. the About page's "Watch Our Story" section) use a
+click-to-load thumbnail pattern, not eager iframes — see
+`components/VideoEmbed.tsx`. No iframe (or YouTube JS) loads until the
+user clicks, which matters on a site delivered entirely as static files.
+Video IDs live in `data/videos.ts`; titles/descriptions are localized
+through `messages/en.ts` / `messages/bn.ts` rather than the data file,
+consistent with how the rest of the site keeps translated copy in
+`messages/`.

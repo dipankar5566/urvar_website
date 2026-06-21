@@ -100,6 +100,14 @@ const en = {
     values_heading: "Our Values",
     explore_heading: "Explore Urvar",
     explore_sub: "Go deeper into how we make our products and the recognitions behind the brand.",
+    videos_heading: "Watch Our Story",
+    videos_sub: "See Urvar Natural in action — from our farms to our mission.",
+    video1_title: "🌱 Boost Your Crops with Urvar Natural's Organic Fertilizers! 🌱 | Powerful Growth Formula",
+    video1_desc:
+      "Are you looking for a sustainable and effective way to improve soil health and crop yield? 🌾 Urvar Natural Pvt Ltd brings you premium organic fertilizers that enhance soil fertility and promote healthy plant growth. \n\n✅ For: Biofertilizer Industries | Fertilizer Dealers | Retailers | Farmers\n✅ Benefits: Improved soil fertility, sustainable farming, and better crop yield\n✅ Chemical-free\n✅ 100% eco-friendly\n✅ Trusted by farmers and retailers across India!\n\n🌾 Switch to Sustainable Farming Today! 🌾\n\n📞 Contact Us for Dealership & Bulk Orders:\n📱 +91 9163731010 | +91 9035708943 | +91 8335825566\n\n#organicfertilizer #biofertilizer #sustainablefarming #organicfarming #ecofriendly #soilhealth #farmerschoice #grownaturally",
+    video2_title: "🌱 Urvar Natural Vermicompost – 100% Organic Fertilizer for Thriving Plants! 🌿",
+    video2_desc:
+      "🌾 Give your plants the best care with Urvar Natural Vermicompost! Enriched with organic nutrients, it improves soil fertility, enhances plant growth, and ensures a healthier harvest. 🍀\n\n✅ 100% Natural & Chemical-Free\n✅ Improves Soil Health & Retains Moisture\n✅ Perfect for Home Gardens, Farms & Indoor Plants\n\n🛒 Available Now:\n👉 Amazon: https://www.amazon.in/dp/B0D73QDTTR\n👉 Flipkart: https://www.flipkart.com/p/itme04243beb9c63\n\n📦 For Bulk Orders, Contact:\n📞 9035708943, 8335825566, 9163731010\n📩 Email: mail.bharatorganics@gmail.com\n\n#UrvarVermicompost #organicfarming #sustainablegardening #healthysoil #homegardening #plantlovers #ecofriendly #greenliving",
   },
   mfg: {
     heading: "Manufacturing & Quality",

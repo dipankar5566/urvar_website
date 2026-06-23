@@ -15,7 +15,7 @@ function DownloadRow({ item, requestLabel, downloadLabel }: { item: DownloadItem
   return (
     <Card className="p-5 flex items-center justify-between gap-4">
       <div className="flex items-center gap-3 min-w-0">
-        <span className="w-10 h-10 rounded-lg bg-urvar-light text-urvar-green flex items-center justify-center font-bold shrink-0">
+        <span className="w-10 h-10 bg-urvar-light text-urvar-green flex items-center justify-center font-bold shrink-0">
           ↓
         </span>
         <span className="font-medium text-urvar-dark truncate">{item.title}</span>
@@ -50,21 +50,25 @@ export default function DownloadsPage() {
 
   return (
     <>
-      <Section bg="dark" className="!py-12 sm:!py-16">
-        <nav className="text-sm text-urvar-light/80 mb-5" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white">
-            {t.nav.home}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-white">{t.downloads.heading}</span>
-        </nav>
-        <h1 className="text-3xl sm:text-4xl font-bold">{t.downloads.heading}</h1>
-        <p className="mt-4 max-w-2xl text-urvar-light/90 leading-relaxed">{t.downloads.sub}</p>
-      </Section>
+      <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white">
+              {t.nav.home}
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-white">{t.downloads.heading}</span>
+          </nav>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[32px] sm:text-[44px] leading-[1.0] mb-3">
+            {t.downloads.heading}
+          </h1>
+          <p className="max-w-2xl text-white/62 leading-relaxed">{t.downloads.sub}</p>
+        </div>
+      </section>
 
       <Section bg="white">
         {anyMissing && (
-          <p className="mb-8 text-sm text-neutral-500 bg-urvar-light rounded-lg px-4 py-3">
+          <p className="mb-8 text-sm text-neutral-500 bg-urvar-light px-4 py-3">
             {t.downloads.request_note}
           </p>
         )}

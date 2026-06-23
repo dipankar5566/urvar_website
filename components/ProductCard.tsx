@@ -4,38 +4,41 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 import type { Product } from "@/data/products";
-import { categoryMeta } from "@/lib/categories";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  ctaVariant = "link",
+}: {
+  product: Product;
+  ctaVariant?: "link" | "pill";
+}) {
   const { t } = useLang();
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:border-urvar-green/30 transition-all duration-200 group flex flex-col">
-      <div className="relative h-52 bg-gradient-to-b from-gray-50 to-gray-100/50">
+    <Link href={`/products/${product.slug}`} className="group flex flex-col bg-white">
+      <div className="relative aspect-square bg-soft-cloud overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+          className="object-cover transition-transform duration-[450ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]"
         />
-      </div>
-      <div className="p-5 flex flex-col flex-1">
-        <span className={`self-start text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryMeta[product.category].badge}`}>
+        <span className="absolute top-2.5 left-2.5 bg-white border border-hairline rounded-full text-xs font-semibold px-3 py-1 text-ink whitespace-nowrap">
           {product.category}
         </span>
-        <h3 className="font-bold text-urvar-dark text-lg leading-snug mb-1">{product.name}</h3>
-        <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{product.tagline}</p>
-        <Link
-          href={`/products/${product.slug}`}
-          className="inline-flex items-center gap-1.5 text-urvar-green font-semibold text-sm hover:gap-3 transition-all"
-        >
-          {t.products.learn_more}
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </Link>
       </div>
-    </div>
+      <div className="pt-3.5 pb-1">
+        <h3 className="font-bold text-ink text-sm leading-snug mb-1">{product.name}</h3>
+        <p className="text-mute text-[13px] leading-relaxed mb-3 line-clamp-2">{product.tagline}</p>
+        {ctaVariant === "pill" ? (
+          <span className="text-urvar-green font-bold text-xs border border-urvar-green rounded-full px-3.5 py-1 inline-block">
+            {t.products.learn_more}
+          </span>
+        ) : (
+          <span className="text-urvar-green font-bold text-xs">{t.products.learn_more} →</span>
+        )}
+      </div>
+    </Link>
   );
 }

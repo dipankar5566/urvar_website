@@ -30,9 +30,9 @@ export default function BlogPostClient({ slug }: { slug: string }) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-urvar-dark py-12">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-sm text-urvar-light/80 mb-6" aria-label="Breadcrumb">
+      <section className="bg-[#104C36] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <nav className="text-[13px] text-white/55 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-white">
               {t.nav.home}
             </Link>
@@ -44,8 +44,10 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           <Badge tone="green" className="mb-4">
             {post.category}
           </Badge>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">{content.title}</h1>
-          <p className="mt-4 text-urvar-light/80 text-sm">
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[28px] sm:text-[38px] leading-[1.1]">
+            {content.title}
+          </h1>
+          <p className="mt-4 text-white/55 text-sm">
             {t.blog.by} {post.author} · {dateLabel}
           </p>
         </div>
@@ -53,7 +55,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
 
       {/* Cover image */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="relative h-56 sm:h-72 rounded-2xl overflow-hidden shadow-e2">
+        <div className="relative h-56 sm:h-72 overflow-hidden">
           <Image src={post.image} alt={content.title} fill className="object-cover" priority />
         </div>
       </div>
@@ -96,7 +98,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
       {/* CTA */}
       <Section bg="mint">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-urvar-dark">{t.blog.cta_heading}</h2>
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px]">{t.blog.cta_heading}</h2>
           <p className="mt-2 text-neutral-600">{t.blog.cta_sub}</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <Button href="/contact" variant="primary">

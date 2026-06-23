@@ -22,21 +22,25 @@ export default function ManufacturingQualityPage() {
   return (
     <>
       {/* Hero */}
-      <Section bg="dark" className="!py-12 sm:!py-16">
-        <nav className="text-sm text-urvar-light/80 mb-5" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white">
-            {t.nav.home}
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/about" className="hover:text-white">
-            {t.nav.about}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-white">{t.mfg.heading}</span>
-        </nav>
-        <h1 className="text-3xl sm:text-4xl font-bold">{t.mfg.heading}</h1>
-        <p className="mt-4 max-w-2xl text-urvar-light/90 leading-relaxed">{t.mfg.sub}</p>
-      </Section>
+      <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white">
+              {t.nav.home}
+            </Link>
+            <span className="mx-2">/</span>
+            <Link href="/about" className="hover:text-white">
+              {t.nav.about}
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-white">{t.mfg.heading}</span>
+          </nav>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[32px] sm:text-[44px] leading-[1.0] mb-3">
+            {t.mfg.heading}
+          </h1>
+          <p className="max-w-2xl text-white/62 leading-relaxed">{t.mfg.sub}</p>
+        </div>
+      </section>
 
       {/* Intro */}
       <Section bg="white">
@@ -45,12 +49,14 @@ export default function ManufacturingQualityPage() {
 
       {/* Process */}
       <Section bg="earth">
-        <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark mb-10">{t.mfg.process_heading}</h2>
+        <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px] mb-10">
+          {t.mfg.process_heading}
+        </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((s, i) => (
             <Card key={s.title} className="p-5">
-              <div className="w-10 h-10 rounded-full bg-urvar-green text-white flex items-center justify-center font-bold">
-                {i + 1}
+              <div className="font-[family-name:var(--font-campaign)] text-urvar-green text-4xl leading-none">
+                0{i + 1}
               </div>
               <h3 className="mt-4 font-semibold text-urvar-dark">{s.title}</h3>
               <p className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{s.body}</p>
@@ -63,13 +69,15 @@ export default function ManufacturingQualityPage() {
       <Section bg="white">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark">{t.mfg.quality_heading}</h2>
+            <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px]">
+              {t.mfg.quality_heading}
+            </h2>
             <ul className="mt-6 space-y-3">
               {qc.map((q) => (
                 <li key={q} className="flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-full bg-urvar-light text-urvar-green flex items-center justify-center text-sm font-bold shrink-0">
-                    ✓
-                  </span>
+                  <svg width="14" height="14" fill="none" stroke="#009253" strokeWidth={2.5} viewBox="0 0 24 24" className="flex-shrink-0">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                   <span className="text-neutral-700">{q}</span>
                 </li>
               ))}

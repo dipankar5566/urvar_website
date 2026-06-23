@@ -1,9 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useLang } from "@/context/LangContext";
-import Section from "@/components/ui/Section";
-import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import DealerEnquiryForm from "@/components/DealerEnquiryForm";
 
@@ -40,113 +39,107 @@ export default function BecomeADistributorPage() {
   return (
     <>
       {/* Hero */}
-      <Section bg="dark" className="!py-16 sm:!py-24">
-        <div className="max-w-3xl">
-          <Badge tone="green" className="mb-5">
-            {t.dealer.eyebrow}
-          </Badge>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0 bg-[#0a2018]">
+          <Image src="/images/farm1.jpg" alt="Urvar farm" fill sizes="100vw" className="object-cover opacity-35" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#08140d]/95 via-[#08140d]/55 to-[#08140d]/70" />
+        </div>
+        <div className="relative max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
+          <p className="text-[11px] font-medium text-[#4ade80] tracking-[2px] uppercase mb-3.5">{t.dealer.eyebrow}</p>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white leading-[1.0] max-w-2xl mb-4.5 text-[50px] sm:text-[92px]">
             {t.dealer.heading}
           </h1>
-          <p className="mt-5 text-base sm:text-lg text-urvar-light/90 max-w-2xl">
-            {t.dealer.subheading}
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+          <p className="text-white/62 text-base leading-relaxed max-w-lg mb-8">{t.dealer.subheading}</p>
+          <div className="flex flex-wrap gap-3">
             <Button href="#apply" variant="onDark" size="lg">
               {t.dealer.cta_apply}
             </Button>
-            <Button
+            <Link
               href={WHATSAPP_HREF}
-              variant="secondary"
-              size="lg"
-              className="!border-white !text-white hover:!bg-white hover:!text-urvar-dark"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-transparent text-white font-semibold text-sm px-7 py-3.5 rounded-full border-[1.5px] border-white/40"
             >
               {t.dealer.cta_whatsapp}
-            </Button>
+            </Link>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* Benefits */}
-      <Section bg="white">
-        <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark text-center">
-          {t.dealer.benefits_heading}
-        </h2>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((b) => (
-            <Card key={b.title} interactive className="p-6">
-              <div className="w-11 h-11 rounded-xl bg-urvar-light text-urvar-green flex items-center justify-center text-xl font-bold">
-                {b.icon}
+      <section className="bg-canvas py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-ink text-[26px] sm:text-[32px] text-center mb-12">
+            {t.dealer.benefits_heading}
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((b, i) => (
+              <div key={b.title} className="border-t-2 border-urvar-green pt-5">
+                <div className="font-[family-name:var(--font-campaign)] text-hairline text-5xl leading-none mb-3">
+                  0{i + 1}
+                </div>
+                <h3 className="font-bold text-ink text-[13px] uppercase tracking-[0.05em] mb-2.5">{b.title}</h3>
+                <p className="text-mute text-[13px] leading-relaxed">{b.body}</p>
               </div>
-              <h3 className="mt-4 font-semibold text-lg text-urvar-dark">{b.title}</h3>
-              <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{b.body}</p>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Who we're looking for */}
-      <Section bg="earth">
-        <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark text-center">
-          {t.dealer.who_heading}
-        </h2>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {who.map((w) => (
-            <span
-              key={w}
-              className="bg-white border border-neutral-200 rounded-full px-5 py-2.5 text-sm font-medium text-urvar-earth shadow-e1"
-            >
-              {w}
-            </span>
-          ))}
+      <section className="bg-urvar-earth-light py-12 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[#d5ccbe]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px] text-center mb-10">
+            {t.dealer.who_heading}
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {who.map((w) => (
+              <span key={w} className="bg-white/55 border border-urvar-earth/30 rounded-full px-5 py-2.5 text-sm font-semibold text-urvar-dark">
+                {w}
+              </span>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Process */}
-      <Section bg="white">
-        <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark text-center">
-          {t.dealer.process_heading}
-        </h2>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {process.map((p) => (
-            <div key={p.step} className="text-center sm:text-left">
-              <div className="w-10 h-10 rounded-full bg-urvar-green text-white flex items-center justify-center font-bold mx-auto sm:mx-0">
-                {p.step}
+      <section className="bg-canvas py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-ink text-[26px] sm:text-[32px] text-center mb-10">
+            {t.dealer.process_heading}
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {process.map((p) => (
+              <div key={p.step} className="bg-soft-cloud border border-hairline p-7">
+                <div className="font-[family-name:var(--font-campaign)] text-urvar-green text-5xl leading-none mb-4">{p.step}</div>
+                <h3 className="font-bold text-ink text-[13px] uppercase tracking-[0.05em] mb-2.5">{p.title}</h3>
+                <p className="text-mute text-[13px] leading-relaxed">{p.body}</p>
               </div>
-              <h3 className="mt-4 font-semibold text-urvar-dark">{p.title}</h3>
-              <p className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{p.body}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Application form */}
-      <Section bg="mint" id="apply">
+      <section id="apply" className="bg-soft-cloud py-12 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-hairline">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-urvar-dark">
+          <div className="text-center mb-8">
+            <h2 className="font-[family-name:var(--font-campaign)] uppercase text-ink text-[26px] sm:text-[32px]">
               {t.dealer.form_heading}
             </h2>
-            <p className="mt-2 text-neutral-600">{t.dealer.form_sub}</p>
+            <p className="mt-2 text-mute">{t.dealer.form_sub}</p>
           </div>
-          <Card className="mt-8 p-6 sm:p-8">
+          <div className="bg-canvas border border-hairline p-6 sm:p-10">
             <DealerEnquiryForm />
-            <p className="mt-5 text-center text-sm text-neutral-500">
+            <p className="mt-5 text-center text-sm text-mute">
               {t.dealer.cta_whatsapp}:{" "}
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-urvar-green font-semibold hover:underline"
-              >
+              <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="text-urvar-green font-semibold hover:underline">
                 +91 90357 08943
               </a>
             </p>
-          </Card>
+          </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

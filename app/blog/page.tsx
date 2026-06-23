@@ -12,17 +12,21 @@ export default function BlogPage() {
 
   return (
     <>
-      <Section bg="dark" className="!py-12 sm:!py-16">
-        <nav className="text-sm text-urvar-light/80 mb-5" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white">
-            {t.nav.home}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-white">{t.blog.heading}</span>
-        </nav>
-        <h1 className="text-3xl sm:text-4xl font-bold">{t.blog.heading}</h1>
-        <p className="mt-4 max-w-2xl text-urvar-light/90 leading-relaxed">{t.blog.sub}</p>
-      </Section>
+      <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white">
+              {t.nav.home}
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-white">{t.blog.heading}</span>
+          </nav>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[32px] sm:text-[44px] leading-[1.0] mb-3">
+            {t.blog.heading}
+          </h1>
+          <p className="max-w-2xl text-white/62 leading-relaxed">{t.blog.sub}</p>
+        </div>
+      </section>
 
       <Section bg="white">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -32,7 +36,7 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl border border-neutral-200 shadow-e1 overflow-hidden hover:shadow-e2 hover:-translate-y-1 transition-all flex flex-col"
+                className="group bg-white border border-hairline overflow-hidden hover:-translate-y-1 transition-transform flex flex-col"
               >
                 <div className="relative h-44">
                   <Image

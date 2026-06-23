@@ -11,7 +11,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`bg-white rounded-2xl border border-neutral-200 shadow-e1 ${
+      className={`bg-white border border-hairline ${
         interactive
           ? "transition-shadow transition-transform duration-200 hover:shadow-e2 hover:-translate-y-1"
           : ""

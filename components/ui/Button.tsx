@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "ghost" | "onDark";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-urvar-green disabled:opacity-60 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-urvar-green disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary: "bg-urvar-green text-white hover:bg-urvar-dark",

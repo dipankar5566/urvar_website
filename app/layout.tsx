@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/LangContext";
 import Navbar from "@/components/Navbar";
@@ -7,9 +7,16 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const raleway = Raleway({
+const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-raleway",
+  weight: "400",
+  variable: "--font-campaign",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-text",
   display: "swap",
 });
 
@@ -60,7 +67,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`h-full ${raleway.variable}`}>
+    <html lang="en" className={`h-full ${bebasNeue.variable} ${inter.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
         <script
           type="application/ld+json"

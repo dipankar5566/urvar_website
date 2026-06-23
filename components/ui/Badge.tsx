@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type Tone = "green" | "dark" | "earth" | "leaf" | "neutral";
+type Tone = "green" | "dark" | "earth" | "leaf" | "neutral" | "ink";
 
 const tones: Record<Tone, string> = {
   green: "bg-urvar-light text-urvar-dark",
@@ -8,6 +8,7 @@ const tones: Record<Tone, string> = {
   earth: "bg-urvar-earth-light text-urvar-earth",
   leaf: "bg-urvar-leaf/15 text-urvar-dark",
   neutral: "bg-neutral-100 text-neutral-700",
+  ink: "bg-soft-cloud text-ink border border-hairline",
 };
 
 export default function Badge({

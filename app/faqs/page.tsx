@@ -21,17 +21,21 @@ export default function FaqsPage() {
 
   return (
     <>
-      <Section bg="dark" className="!py-12 sm:!py-16">
-        <nav className="text-sm text-urvar-light/80 mb-5" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white">
-            {t.nav.home}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-white">{t.faqs.heading}</span>
-        </nav>
-        <h1 className="text-3xl sm:text-4xl font-bold">{t.faqs.heading}</h1>
-        <p className="mt-4 max-w-2xl text-urvar-light/90 leading-relaxed">{t.faqs.sub}</p>
-      </Section>
+      <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white">
+              {t.nav.home}
+            </Link>
+            <span className="mx-2">/</span>
+            <span className="text-white">{t.faqs.heading}</span>
+          </nav>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[32px] sm:text-[44px] leading-[1.0] mb-3">
+            {t.faqs.heading}
+          </h1>
+          <p className="max-w-2xl text-white/62 leading-relaxed">{t.faqs.sub}</p>
+        </div>
+      </section>
 
       <Section bg="white">
         <div className="max-w-3xl mx-auto space-y-10">
@@ -40,27 +44,35 @@ export default function FaqsPage() {
             if (items.length === 0) return null;
             return (
               <div key={group}>
-                <h2 className="text-lg font-bold text-urvar-green uppercase tracking-wide mb-3">
+                <h2 className="text-[11px] font-bold text-urvar-green uppercase tracking-[2px] mb-3">
                   {groupLabel[group]}
                 </h2>
-                <div className="divide-y divide-neutral-200 border-y border-neutral-200">
+                <div className="border-t border-hairline">
                   {items.map((f) => {
                     const isOpen = open === f.id;
                     const content = lang === "bn" ? f.bn : f.en;
                     return (
-                      <div key={f.id}>
+                      <div key={f.id} className="border-b border-hairline">
                         <button
                           onClick={() => setOpen(isOpen ? null : f.id)}
                           className="w-full flex items-center justify-between gap-4 py-4 text-left"
                           aria-expanded={isOpen}
                         >
-                          <span className="font-semibold text-urvar-dark">{content.q}</span>
-                          <span className={`text-urvar-green text-xl shrink-0 transition-transform ${isOpen ? "rotate-45" : ""}`}>
-                            +
-                          </span>
+                          <span className="font-semibold text-ink">{content.q}</span>
+                          <svg
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="#009253"
+                            strokeWidth={2}
+                            viewBox="0 0 24 24"
+                            className={`flex-shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
                         </button>
                         {isOpen && (
-                          <p className="pb-4 -mt-1 text-neutral-600 leading-relaxed">{content.a}</p>
+                          <p className="pb-4 -mt-1 text-mute leading-relaxed">{content.a}</p>
                         )}
                       </div>
                     );
@@ -74,7 +86,7 @@ export default function FaqsPage() {
 
       <Section bg="mint">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-urvar-dark">{t.faqs.cta_heading}</h2>
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px]">{t.faqs.cta_heading}</h2>
           <p className="mt-2 text-neutral-600">{t.faqs.cta_sub}</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <Button href="/contact" variant="primary">

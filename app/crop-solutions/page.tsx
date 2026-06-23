@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
-import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import crops from "@/data/crops";
 
@@ -12,68 +11,60 @@ export default function CropSolutionsPage() {
 
   return (
     <>
-      <Section bg="dark" className="!py-12 sm:!py-16">
-        <nav className="text-sm text-urvar-light/80 mb-5" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white">
-            {t.nav.home}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-white">{t.crops.hub_heading}</span>
-        </nav>
-        <h1 className="text-3xl sm:text-4xl font-bold">{t.crops.hub_heading}</h1>
-        <p className="mt-4 max-w-2xl text-urvar-light/90 leading-relaxed">{t.crops.hub_sub}</p>
-      </Section>
-
-      <Section bg="white">
-        <h2 className="text-xl sm:text-2xl font-bold text-urvar-dark mb-8">{t.crops.select_crop}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {crops.map((crop) => (
-            <Link
-              key={crop.slug}
-              href={`/crop-solutions/${crop.slug}`}
-              className="group bg-white rounded-2xl border border-neutral-200 shadow-e1 overflow-hidden hover:shadow-e2 hover:-translate-y-1 transition-all"
-            >
-              <div className="relative h-44">
-                <Image
-                  src={crop.image}
-                  alt={t.crops[crop.nameKey]}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-urvar-dark/70 to-transparent" />
-                <h3 className="absolute bottom-3 left-4 text-white font-bold text-lg">
-                  {t.crops[crop.nameKey]}
-                </h3>
-              </div>
-              <div className="p-5">
-                <span className="text-urvar-green font-semibold text-sm inline-flex items-center gap-1.5 group-hover:gap-3 transition-all">
-                  {t.crops.view_program} →
-                </span>
-              </div>
-            </Link>
-          ))}
+      <section className="bg-[#104C36] pt-14 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] font-medium text-[#4ade80] tracking-[2px] uppercase mb-3">Nutrition Programs</p>
+          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[44px] sm:text-[68px] leading-[1.0] mb-2.5">
+            {t.crops.hub_heading}
+          </h1>
+          <p className="text-white/62 text-base max-w-[540px] leading-relaxed">{t.crops.hub_sub}</p>
         </div>
-      </Section>
+      </section>
 
-      <Section bg="mint">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-urvar-dark">{t.crops.cta_heading}</h2>
-          <p className="mt-2 text-neutral-600">{t.crops.cta_sub}</p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="bg-canvas border-b border-hairline py-5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] font-bold text-stone tracking-[1.5px] uppercase mb-3.5">{t.crops.select_crop}</p>
+          <div className="flex flex-wrap gap-2">
+            {crops.map((crop) => (
+              <Link
+                key={crop.slug}
+                href={`/crop-solutions/${crop.slug}`}
+                className="flex items-center gap-2 pl-[7px] pr-3.5 py-[7px] rounded-lg border border-hairline hover:border-urvar-green transition-colors flex-shrink-0"
+              >
+                <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 bg-soft-cloud">
+                  <Image
+                    src={crop.image}
+                    alt={t.crops[crop.nameKey]}
+                    fill
+                    sizes="28px"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="text-[13px] font-bold text-charcoal whitespace-nowrap">
+                  {t.crops[crop.nameKey]}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <section className="bg-urvar-earth-light py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[#d5ccbe] text-center">
+        <div className="max-w-lg mx-auto">
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[28px] sm:text-[36px] leading-[1.1] mb-3">
+            {t.crops.cta_heading}
+          </h2>
+          <p className="text-[#514e45] text-[15px] leading-relaxed mb-7">{t.crops.cta_sub}</p>
+          <div className="flex justify-center gap-3 flex-wrap">
             <Button href="/contact" variant="primary">
               {t.home.contact_cta}
             </Button>
-            <Button
-              href="https://wa.me/919035708943"
-              variant="secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Button href="https://wa.me/919035708943" variant="secondary" target="_blank" rel="noopener noreferrer">
               {t.contact.whatsapp}
             </Button>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

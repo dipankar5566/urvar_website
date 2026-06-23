@@ -1,0 +1,30 @@
+# Urvar Natural
+
+> Urvar Natural Pvt. Ltd. is a science-driven organic fertilizer and bio-stimulant manufacturer based in West Bengal, India. Products restore soil health and boost crop productivity through organic manures, phosphate fertilizers, bio-stimulants, and micronutrients.
+
+## Products
+
+- [All products](https://urvarindia.com/products/): Full catalog across all categories
+- [Organic Manures](https://urvarindia.com/products/category/organic-manures/)
+- [Phosphate Fertilizers](https://urvarindia.com/products/category/phosphate-fertilizers/)
+- [Bio-Stimulants](https://urvarindia.com/products/category/bio-stimulants/)
+- [Micronutrients](https://urvarindia.com/products/category/micronutrients/)
+
+## Crop Solutions
+
+- [Crop solutions](https://urvarindia.com/crop-solutions/): Stage-by-stage product recommendations by crop
+
+## Company
+
+- [About Urvar Natural](https://urvarindia.com/about/)
+- [Manufacturing & quality](https://urvarindia.com/about/manufacturing-quality/)
+- [Certificates](https://urvarindia.com/certificates/)
+- [Become a distributor](https://urvarindia.com/dealers/become-a-distributor/)
+- [Contact](https://urvarindia.com/contact/)
+
+## Resources
+
+- [Blog](https://urvarindia.com/blog/)
+- [FAQs](https://urvarindia.com/faqs/)
+- [Downloads](https://urvarindia.com/resources/downloads/)
+- [Sitemap](https://urvarindia.com/sitemap.xml)

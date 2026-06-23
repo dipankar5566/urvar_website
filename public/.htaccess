@@ -1,0 +1,9 @@
+# Advertise the agent-discovery manifest on the homepage response only
+# (RFC 8288 Link header). See public/llms.txt for the linked resource.
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^$ - [E=IS_HOMEPAGE:1]
+
+<IfModule mod_headers.c>
+    Header set Link "</llms.txt>; rel=\"describedby\"" env=IS_HOMEPAGE
+</IfModule>

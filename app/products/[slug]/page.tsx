@@ -15,6 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: product.tagline,
     alternates: {
       canonical: `/products/${slug}`,
+      languages: {
+        "en-IN": `/products/${slug}`,
+        "bn-IN": `/bn/products/${slug}`,
+        "x-default": `/products/${slug}`,
+      },
     },
     openGraph: {
       title: `${product.name} – Urvar Natural`,

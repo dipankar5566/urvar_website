@@ -28,7 +28,7 @@ const crops: Crop[] = [
     slug: "rice",
     nameKey: "rice_name",
     introKey: "rice_intro",
-    image: "/images/crops/rice.jpg",
+    image: "/images/crops/rice.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["vermicompost", "prom"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid", "zinc-edta"] },
@@ -40,7 +40,7 @@ const crops: Crop[] = [
     slug: "wheat",
     nameKey: "wheat_name",
     introKey: "wheat_intro",
-    image: "/images/crops/wheat.jpg",
+    image: "/images/crops/wheat.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["cow-dung-manure", "prom"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid", "zinc-edta"] },
@@ -52,7 +52,7 @@ const crops: Crop[] = [
     slug: "vegetables",
     nameKey: "vegetables_name",
     introKey: "vegetables_intro",
-    image: "/images/crops/vegetables.jpg",
+    image: "/images/crops/vegetables.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["vermicompost", "prom-humic-enriched"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid", "zinc-edta"] },
@@ -64,7 +64,7 @@ const crops: Crop[] = [
     slug: "potato",
     nameKey: "potato_name",
     introKey: "potato_intro",
-    image: "/images/crops/potato.jpg",
+    image: "/images/crops/potato.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["vermicompost", "prom"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid", "zinc-edta"] },
@@ -76,7 +76,7 @@ const crops: Crop[] = [
     slug: "mustard",
     nameKey: "mustard_name",
     introKey: "mustard_intro",
-    image: "/images/crops/mustard.jpg",
+    image: "/images/crops/mustard.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["cow-dung-manure", "prom"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid"] },
@@ -88,7 +88,7 @@ const crops: Crop[] = [
     slug: "fruit-crops",
     nameKey: "fruit_name",
     introKey: "fruit_intro",
-    image: "/images/crops/fruit-crops.jpg",
+    image: "/images/crops/fruit-crops.webp",
     stages: [
       { stageKey: "land_prep", productSlugs: ["vermicompost", "prom-humic-enriched"] },
       { stageKey: "vegetative", productSlugs: ["humic-acid-liquid", "zinc-edta"] },

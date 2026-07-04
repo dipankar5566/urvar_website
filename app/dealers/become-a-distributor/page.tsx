@@ -41,7 +41,7 @@ export default function BecomeADistributorPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 bg-[#0a2018]">
-          <Image src="/images/farm1.jpg" alt="Urvar farm" fill sizes="100vw" className="object-cover opacity-35" priority />
+          <Image src="/images/farm1.webp" alt="Urvar farm" fill sizes="100vw" className="object-cover opacity-35" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#08140d]/95 via-[#08140d]/55 to-[#08140d]/70" />
         </div>
         <div className="relative max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-18">

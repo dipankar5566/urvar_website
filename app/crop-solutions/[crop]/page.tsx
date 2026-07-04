@@ -21,6 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: en.crops[crop.introKey],
     alternates: {
       canonical: `/crop-solutions/${slug}`,
+      languages: {
+        "en-IN": `/crop-solutions/${slug}`,
+        "bn-IN": `/bn/crop-solutions/${slug}`,
+        "x-default": `/crop-solutions/${slug}`,
+      },
+    },
+    openGraph: {
+      title: `${name} Crop Solution – Urvar Natural`,
+      description: en.crops[crop.introKey],
+      images: [{ url: crop.image.replace(/\.webp$/, ".jpg") }],
     },
   };
 }

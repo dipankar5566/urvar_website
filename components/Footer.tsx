@@ -6,7 +6,7 @@ import { useLang } from "@/context/LangContext";
 import { allCategories, categoryMeta } from "@/lib/categories";
 
 export default function Footer() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   return (
     <footer className="bg-[#104C36] text-white border-t-[3px] border-urvar-green">
@@ -28,7 +28,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[13px] text-white/58">
               {allCategories.map((cat) => (
                 <li key={cat}>
-                  <Link href={`/products/category/${categoryMeta[cat].slug}`} className="hover:text-white transition-colors">
+                  <Link href={localize(`/products/category/${categoryMeta[cat].slug}`)} className="hover:text-white transition-colors">
                     {t.products[categoryMeta[cat].nameKey]}
                   </Link>
                 </li>
@@ -40,12 +40,12 @@ export default function Footer() {
           <div>
             <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.footer.quick_links}</h3>
             <ul className="space-y-2.5 text-[13px] text-white/58">
-              <li><Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">{t.nav.about}</Link></li>
-              <li><Link href="/crop-solutions" className="hover:text-white transition-colors">{t.nav.crops}</Link></li>
-              <li><Link href="/certificates" className="hover:text-white transition-colors">{t.certificates.heading}</Link></li>
-              <li><Link href="/dealers/become-a-distributor" className="hover:text-white transition-colors">{t.nav.dealer}</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">{t.nav.contact}</Link></li>
+              <li><Link href={localize("/")} className="hover:text-white transition-colors">{t.nav.home}</Link></li>
+              <li><Link href={localize("/about")} className="hover:text-white transition-colors">{t.nav.about}</Link></li>
+              <li><Link href={localize("/crop-solutions")} className="hover:text-white transition-colors">{t.nav.crops}</Link></li>
+              <li><Link href={localize("/certificates")} className="hover:text-white transition-colors">{t.certificates.heading}</Link></li>
+              <li><Link href={localize("/dealers/become-a-distributor")} className="hover:text-white transition-colors">{t.nav.dealer}</Link></li>
+              <li><Link href={localize("/contact")} className="hover:text-white transition-colors">{t.nav.contact}</Link></li>
             </ul>
           </div>
 
@@ -53,10 +53,10 @@ export default function Footer() {
           <div>
             <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.nav.resources}</h3>
             <ul className="space-y-2.5 text-[13px] text-white/58">
-              <li><Link href="/blog" className="hover:text-white transition-colors">{t.nav.blog}</Link></li>
-              <li><Link href="/faqs" className="hover:text-white transition-colors">{t.nav.faqs}</Link></li>
-              <li><Link href="/resources/downloads" className="hover:text-white transition-colors">{t.nav.downloads}</Link></li>
-              <li><Link href="/about/manufacturing-quality" className="hover:text-white transition-colors">{t.mfg.heading}</Link></li>
+              <li><Link href={localize("/blog")} className="hover:text-white transition-colors">{t.nav.blog}</Link></li>
+              <li><Link href={localize("/faqs")} className="hover:text-white transition-colors">{t.nav.faqs}</Link></li>
+              <li><Link href={localize("/resources/downloads")} className="hover:text-white transition-colors">{t.nav.downloads}</Link></li>
+              <li><Link href={localize("/about/manufacturing-quality")} className="hover:text-white transition-colors">{t.mfg.heading}</Link></li>
             </ul>
           </div>
 

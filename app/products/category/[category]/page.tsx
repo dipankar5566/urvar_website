@@ -19,6 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `Explore Urvar Natural's range of ${category.toLowerCase()} — science-driven organic and biological inputs for healthier soil and higher yields.`,
     alternates: {
       canonical: `/products/category/${slug}`,
+      languages: {
+        "en-IN": `/products/category/${slug}`,
+        "bn-IN": `/bn/products/category/${slug}`,
+        "x-default": `/products/category/${slug}`,
+      },
+    },
+    openGraph: {
+      title: `${category} – Urvar Natural`,
+      description: `Explore Urvar Natural's range of ${category.toLowerCase()} — science-driven organic and biological inputs for healthier soil and higher yields.`,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     },
   };
 }

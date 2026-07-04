@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
@@ -28,13 +29,28 @@ export const metadata: Metadata = {
   keywords: "organic fertilizer, vermicompost, biofertilizer, PROM, humic acid, West Bengal, Urvar Natural",
   alternates: {
     canonical: "/",
+    languages: {
+      "en-IN": "/",
+      "bn-IN": "/bn/",
+      "x-default": "/",
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Urvar Natural",
+    locale: "en_IN",
+    url: "/",
+    title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
+    description:
+      "Science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity. Based in West Bengal, India.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Urvar Natural – Organic Fertilizers & Bio-Stimulants" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
     description:
       "Urvar Natural Pvt. Ltd. provides science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity.",
-    images: ["/logo.png"],
+    images: ["/og-image.jpg"],
   },
   ...(process.env.GSC_VERIFICATION
     ? { verification: { google: process.env.GSC_VERIFICATION } }
@@ -74,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <GoogleAnalytics />
+        <AnalyticsEvents />
         <LangProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

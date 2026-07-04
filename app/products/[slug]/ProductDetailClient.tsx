@@ -10,7 +10,7 @@ import products from "@/data/products";
 import { categoryMeta } from "@/lib/categories";
 
 export default function ProductDetailClient({ slug }: { slug: string }) {
-  const { t } = useLang();
+  const { t, localize } = useLang();
   const product = products.find((p) => p.slug === slug);
 
   if (!product) notFound();
@@ -28,7 +28,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     <>
       <div className="bg-canvas border-b border-hairline py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <Link href="/products" className="inline-flex items-center gap-1.5 text-urvar-green font-semibold text-[13px]">
+          <Link href={localize("/products")} className="inline-flex items-center gap-1.5 text-urvar-green font-semibold text-[13px]">
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
@@ -46,7 +46,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           </div>
           <div className="flex-1 min-w-0">
             <Link
-              href={`/products/category/${meta.slug}`}
+              href={localize(`/products/category/${meta.slug}`)}
               className="inline-block bg-soft-cloud border border-hairline text-xs font-semibold text-ink px-3.5 py-1 mb-4"
             >
               {product.category}
@@ -60,7 +60,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               </p>
               <p className="text-[13px] text-mute mb-4">{t.product_detail.cta_sub}</p>
               <div className="flex gap-2.5 flex-wrap">
-                <Button href="/contact" variant="primary">
+                <Button href={localize("/contact")} variant="primary">
                   {t.nav.contact}
                 </Button>
                 <Button href={whatsappHref} variant="secondary" target="_blank" rel="noopener noreferrer">

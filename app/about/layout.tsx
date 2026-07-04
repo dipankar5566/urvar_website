@@ -6,8 +6,14 @@ export const metadata: Metadata = {
     "Learn about Urvar Natural Pvt. Ltd. — a West Bengal-based organic fertilizer company founded in 2023, dedicated to sustainable farming and soil health restoration.",
   alternates: {
     canonical: "/about",
+    languages: {
+      "en-IN": "/about",
+      "bn-IN": "/bn/about",
+      "x-default": "/about",
+    },
   },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     title: "About Urvar Natural Pvt. Ltd.",
     description:
       "Founded in 2023 in West Bengal, Urvar Natural specializes in high-quality organic fertilizers and bio-stimulants. MSME and Startup India certified.",

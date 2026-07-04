@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
+import { track } from "@/lib/analytics";
 
 const inputCls =
   "w-full border border-neutral-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-urvar-green focus:border-transparent";
@@ -39,6 +40,7 @@ export default function DealerEnquiryForm() {
       });
       if (res.ok) {
         setStatus("success");
+        track("generate_lead", { form: "dealer" });
         form.reset();
       } else {
         setStatus("error");

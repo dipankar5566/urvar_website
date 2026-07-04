@@ -7,7 +7,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import videos from "@/data/videos";
 
 export default function AboutPage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   const videoContent = [
     { ...videos[0], title: t.about.video1_title, desc: t.about.video1_desc },
@@ -25,7 +25,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[52vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 bg-[#0a2018]">
-          <Image src="/images/farm1.jpg" alt="Urvar farm" fill sizes="100vw" className="object-cover opacity-35" priority />
+          <Image src="/images/farm1.webp" alt="Urvar farm" fill sizes="100vw" className="object-cover opacity-35" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#08140d]/95 via-[#08140d]/55 to-[#08140d]/70" />
         </div>
         <div className="relative max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-14">
@@ -124,7 +124,7 @@ export default function AboutPage() {
       {/* Farm Photos */}
       <section className="py-3 px-4 sm:px-6 lg:px-8 bg-soft-cloud">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-2">
-          {["/images/farm1.jpg", "/images/farm2.jpg", "/images/farm3.jpg"].map((src, i) => (
+          {["/images/farm1.webp", "/images/farm2.webp", "/images/farm3.webp"].map((src, i) => (
             <div key={i} className="relative h-52">
               <Image src={src} alt={`Urvar farm ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
             </div>
@@ -160,7 +160,7 @@ export default function AboutPage() {
           <p className="text-mute text-center max-w-xl mx-auto mb-10">{t.about.explore_sub}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Link
-              href="/about/manufacturing-quality"
+              href={localize("/about/manufacturing-quality")}
               className="group bg-canvas border border-hairline p-8 hover:border-urvar-green transition-colors"
             >
               <h3 className="font-bold text-ink text-xl">{t.mfg.heading}</h3>
@@ -170,7 +170,7 @@ export default function AboutPage() {
               </span>
             </Link>
             <Link
-              href="/certificates"
+              href={localize("/certificates")}
               className="group bg-canvas border border-hairline p-8 hover:border-urvar-green transition-colors"
             >
               <h3 className="font-bold text-ink text-xl">{t.certificates.heading}</h3>
@@ -232,11 +232,11 @@ export default function AboutPage() {
             Explore our products or become a distributor in your district.
           </p>
           <div className="flex justify-center gap-3 flex-wrap">
-            <Link href="/products" className="bg-white text-[#104C36] font-bold text-sm px-7 py-3 rounded-full">
+            <Link href={localize("/products")} className="bg-white text-[#104C36] font-bold text-sm px-7 py-3 rounded-full">
               {t.nav.products}
             </Link>
             <Link
-              href="/dealers/become-a-distributor"
+              href={localize("/dealers/become-a-distributor")}
               className="bg-transparent text-white font-semibold text-sm px-6 py-3 rounded-full border-[1.5px] border-white/38"
             >
               {t.nav.dealer}

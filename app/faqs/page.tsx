@@ -9,7 +9,7 @@ import faqs, { faqGroupOrder } from "@/data/faqs";
 import type { FaqGroup } from "@/data/faqs";
 
 export default function FaqsPage() {
-  const { t, lang } = useLang();
+  const { t, lang, localize } = useLang();
   const [open, setOpen] = useState<string | null>(faqs[0]?.id ?? null);
 
   const groupLabel: Record<FaqGroup, string> = {
@@ -24,7 +24,7 @@ export default function FaqsPage() {
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
@@ -89,7 +89,7 @@ export default function FaqsPage() {
           <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px]">{t.faqs.cta_heading}</h2>
           <p className="mt-2 text-neutral-600">{t.faqs.cta_sub}</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.home.contact_cta}
             </Button>
             <Button

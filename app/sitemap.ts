@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [
+  const enUrls: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE_URL}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/crop-solutions`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
@@ -56,4 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...postUrls,
     ...productUrls,
   ];
+
+  // Bengali mirror of every page lives under /bn/*.
+  const bnUrls: MetadataRoute.Sitemap = enUrls.map((u) => ({
+    ...u,
+    url: u.url.replace(BASE_URL, `${BASE_URL}/bn`) || `${BASE_URL}/bn`,
+  }));
+
+  return [...enUrls, ...bnUrls];
 }

@@ -12,7 +12,7 @@ import { postBySlug } from "@/data/posts";
 import products from "@/data/products";
 
 export default function BlogPostClient({ slug }: { slug: string }) {
-  const { t, lang } = useLang();
+  const { t, lang, localize } = useLang();
   const post = postBySlug(slug);
   if (!post) notFound();
 
@@ -33,11 +33,11 @@ export default function BlogPostClient({ slug }: { slug: string }) {
       <section className="bg-[#104C36] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
-            <Link href="/blog" className="hover:text-white">
+            <Link href={localize("/blog")} className="hover:text-white">
               {t.blog.heading}
             </Link>
           </nav>
@@ -88,7 +88,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           )}
 
           <div className="mt-8">
-            <Button href="/blog" variant="ghost">
+            <Button href={localize("/blog")} variant="ghost">
               {t.blog.back}
             </Button>
           </div>
@@ -101,7 +101,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[26px] sm:text-[32px]">{t.blog.cta_heading}</h2>
           <p className="mt-2 text-neutral-600">{t.blog.cta_sub}</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.home.contact_cta}
             </Button>
             <Button

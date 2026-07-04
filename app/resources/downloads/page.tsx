@@ -43,7 +43,7 @@ function DownloadRow({ item, requestLabel, downloadLabel }: { item: DownloadItem
 }
 
 export default function DownloadsPage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
   const cataloguesAndKits = downloads.filter((d) => d.type !== "tds");
   const tds = downloads.filter((d) => d.type === "tds");
   const anyMissing = downloads.some((d) => !d.file);
@@ -53,7 +53,7 @@ export default function DownloadsPage() {
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>

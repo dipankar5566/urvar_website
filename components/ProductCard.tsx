@@ -12,10 +12,10 @@ export default function ProductCard({
   product: Product;
   ctaVariant?: "link" | "pill";
 }) {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   return (
-    <Link href={`/products/${product.slug}`} className="group flex flex-col bg-white">
+    <Link href={localize(`/products/${product.slug}`)} className="group flex flex-col bg-white">
       <div className="relative aspect-square bg-soft-cloud overflow-hidden">
         <Image
           src={product.image}

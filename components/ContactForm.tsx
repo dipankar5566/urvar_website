@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
+import { track } from "@/lib/analytics";
 
 export default function ContactForm() {
   const { t } = useLang();
@@ -21,6 +22,7 @@ export default function ContactForm() {
       });
       if (res.ok) {
         setStatus("success");
+        track("generate_lead", { form: "contact" });
         form.reset();
       } else {
         setStatus("error");

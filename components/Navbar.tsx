@@ -7,9 +7,11 @@ import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 
 export default function Navbar() {
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang, t, localize } = useLang();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  // Compare against the path without the /bn prefix so active states work in both trees.
+  const basePath = pathname.replace(/^\/bn(?=\/|$)/, "") || "/";
 
   const links = [
     { href: "/", label: t.nav.home },
@@ -49,7 +51,7 @@ export default function Navbar() {
 
       {/* Primary nav */}
       <nav className="flex items-center h-16 px-4 sm:px-6 lg:px-8 gap-4">
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+        <Link href={localize("/")} className="flex items-center gap-2 flex-shrink-0">
           <Image src="/logo.svg" alt="Urvar Logo" width={30} height={30} priority />
           <span className="font-[family-name:var(--font-campaign)] text-xl tracking-[2px] text-urvar-dark">
             URVAR
@@ -59,11 +61,11 @@ export default function Navbar() {
         {/* Desktop nav links */}
         <div className="hidden md:flex items-stretch flex-1 justify-center h-16">
           {links.map((l) => {
-            const isActive = pathname === l.href;
+            const isActive = basePath === l.href || basePath === `${l.href}/`;
             return (
               <Link
                 key={l.href}
-                href={l.href}
+                href={localize(l.href)}
                 className={`flex items-center px-3 text-sm font-semibold whitespace-nowrap border-b-2 -mb-px ${
                   isActive
                     ? "text-ink border-urvar-green"
@@ -77,7 +79,7 @@ export default function Navbar() {
         </div>
 
         <Link
-          href="/dealers/become-a-distributor"
+          href={localize("/dealers/become-a-distributor")}
           className="hidden md:inline-flex items-center bg-urvar-green hover:bg-urvar-dark text-white font-bold text-[13px] px-5 py-2.5 rounded-full transition-colors flex-shrink-0"
         >
           {t.nav.dealer}
@@ -118,11 +120,11 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-hairline">
           {links.map((l) => {
-            const isActive = pathname === l.href;
+            const isActive = basePath === l.href || basePath === `${l.href}/`;
             return (
               <Link
                 key={l.href}
-                href={l.href}
+                href={localize(l.href)}
                 onClick={() => setOpen(false)}
                 className={`block px-4 sm:px-6 py-3 border-b border-soft-cloud font-semibold text-sm ${
                   isActive ? "text-ink" : "text-mute"
@@ -134,7 +136,7 @@ export default function Navbar() {
           })}
           <div className="px-4 sm:px-6 py-4">
             <Link
-              href="/dealers/become-a-distributor"
+              href={localize("/dealers/become-a-distributor")}
               onClick={() => setOpen(false)}
               className="block text-center bg-urvar-green hover:bg-urvar-dark text-white font-bold px-5 py-3 rounded-full transition-colors"
             >

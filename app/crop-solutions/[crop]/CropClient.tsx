@@ -18,7 +18,7 @@ const stageLabelKey: Record<StageKey, keyof ReturnType<typeof useLang>["t"]["cro
 };
 
 export default function CropClient({ slug }: { slug: string }) {
-  const { t } = useLang();
+  const { t, localize } = useLang();
   const crop = cropBySlug(slug);
   if (!crop) notFound();
 
@@ -40,7 +40,7 @@ export default function CropClient({ slug }: { slug: string }) {
       <section className="bg-soft-cloud py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] mb-6" aria-label="Breadcrumb">
-            <Link href="/crop-solutions" className="text-mute hover:text-ink">
+            <Link href={localize("/crop-solutions")} className="text-mute hover:text-ink">
               {t.crops.hub_heading}
             </Link>
             <span className="mx-2 text-stone">/</span>
@@ -77,7 +77,7 @@ export default function CropClient({ slug }: { slug: string }) {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {currentProducts.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group flex flex-col bg-canvas">
+              <Link key={p.slug} href={localize(`/products/${p.slug}`)} className="group flex flex-col bg-canvas">
                 <div className="relative aspect-square bg-soft-cloud overflow-hidden">
                   <Image
                     src={p.image}
@@ -106,7 +106,7 @@ export default function CropClient({ slug }: { slug: string }) {
           </h2>
           <p className="text-[#514e45] text-[15px] leading-relaxed mb-7">{t.crops.cta_sub}</p>
           <div className="flex justify-center gap-3 flex-wrap">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.home.contact_cta}
             </Button>
             <Button href="https://wa.me/919035708943" variant="secondary" target="_blank" rel="noopener noreferrer">

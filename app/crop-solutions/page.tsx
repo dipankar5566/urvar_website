@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 import crops from "@/data/crops";
 
 export default function CropSolutionsPage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function CropSolutionsPage() {
             {crops.map((crop) => (
               <Link
                 key={crop.slug}
-                href={`/crop-solutions/${crop.slug}`}
+                href={localize(`/crop-solutions/${crop.slug}`)}
                 className="flex items-center gap-2 pl-[7px] pr-3.5 py-[7px] rounded-lg border border-hairline hover:border-urvar-green transition-colors flex-shrink-0"
               >
                 <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 bg-soft-cloud">
@@ -56,7 +56,7 @@ export default function CropSolutionsPage() {
           </h2>
           <p className="text-[#514e45] text-[15px] leading-relaxed mb-7">{t.crops.cta_sub}</p>
           <div className="flex justify-center gap-3 flex-wrap">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.home.contact_cta}
             </Button>
             <Button href="https://wa.me/919035708943" variant="secondary" target="_blank" rel="noopener noreferrer">

@@ -8,14 +8,14 @@ import Badge from "@/components/ui/Badge";
 import posts from "@/data/posts";
 
 export default function BlogPage() {
-  const { t, lang } = useLang();
+  const { t, lang, localize } = useLang();
 
   return (
     <>
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
@@ -35,7 +35,7 @@ export default function BlogPage() {
             return (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={localize(`/blog/${post.slug}`)}
                 className="group bg-white border border-hairline overflow-hidden hover:-translate-y-1 transition-transform flex flex-col"
               >
                 <div className="relative h-44">

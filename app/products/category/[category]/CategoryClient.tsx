@@ -10,7 +10,7 @@ import type { Category } from "@/lib/categories";
 import { categoryMeta } from "@/lib/categories";
 
 export default function CategoryClient({ category }: { category: Category }) {
-  const { t } = useLang();
+  const { t, localize } = useLang();
   const meta = categoryMeta[category];
   const items = products.filter((p) => p.category === category);
   const name = t.products[meta.nameKey];
@@ -22,11 +22,11 @@ export default function CategoryClient({ category }: { category: Category }) {
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
-            <Link href="/products" className="hover:text-white">
+            <Link href={localize("/products")} className="hover:text-white">
               {t.product_detail.breadcrumb_products}
             </Link>
             <span className="mx-2">/</span>
@@ -50,7 +50,7 @@ export default function CategoryClient({ category }: { category: Category }) {
           ))}
         </div>
         <div className="mt-10">
-          <Button href="/products" variant="ghost">
+          <Button href={localize("/products")} variant="ghost">
             ← {t.products.heading}
           </Button>
         </div>
@@ -64,7 +64,7 @@ export default function CategoryClient({ category }: { category: Category }) {
           </h2>
           <p className="mt-2 text-neutral-600">{t.home.contact_sub}</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.home.contact_cta}
             </Button>
             <Button

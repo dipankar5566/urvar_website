@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     "fertilizer dealership, biofertilizer distributorship, organic fertilizer dealership, agri input dealership West Bengal, Urvar Natural dealer",
   alternates: {
     canonical: "/dealers/become-a-distributor",
+    languages: {
+      "en-IN": "/dealers/become-a-distributor",
+      "bn-IN": "/bn/dealers/become-a-distributor",
+      "x-default": "/dealers/become-a-distributor",
+    },
   },
   openGraph: {
     title,

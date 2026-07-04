@@ -7,7 +7,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export default function CertificatesPage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   const certs = [
     { title: t.certificates.msme_title, body: t.certificates.msme_body, no: t.certificates.msme_no },
@@ -21,7 +21,7 @@ export default function CertificatesPage() {
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
@@ -56,7 +56,7 @@ export default function CertificatesPage() {
         <Card className="mt-8 p-6 bg-urvar-light border-urvar-light">
           <p className="text-neutral-700">{t.certificates.note}</p>
           <div className="mt-5">
-            <Button href="/contact" variant="primary">
+            <Button href={localize("/contact")} variant="primary">
               {t.certificates.cta}
             </Button>
           </div>

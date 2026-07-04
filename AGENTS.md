@@ -27,6 +27,21 @@ Practical implications for any future change:
 - `next/image` runs with `unoptimized: true` — no automatic AVIF/WebP
   conversion, images are served as-is.
 
+# Localization (EN at /, Bengali at /bn/*)
+
+Language is URL-based so Bengali pages are crawlable static HTML: English
+lives at `/`, Bengali at `/bn/*`. `context/LangContext.tsx` derives the
+language from `usePathname()` (no localStorage, no client toggle state) —
+this makes Navbar/Footer localize automatically and bakes Bengali text
+into the prerendered HTML under `out/bn/`. The pages in `app/bn/**` are
+thin server wrappers that re-export the English page component and supply
+Bengali metadata + hreflang alternates (`en-IN`/`bn-IN`/`x-default`);
+English metadata carries the same hreflang pairs. When adding a page or
+dynamic route, add its `/bn` wrapper, hreflang on both sides, and the
+sitemap picks it up automatically (sitemap mirrors every URL under /bn).
+Internal links in client components must go through `localize()` from
+`useLang()` so they stay within the current language tree.
+
 # Video embeds
 
 YouTube videos (e.g. the About page's "Watch Our Story" section) use a

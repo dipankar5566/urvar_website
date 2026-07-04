@@ -11,7 +11,7 @@ import { useLang } from "@/context/LangContext";
 import products from "@/data/products";
 
 export default function HomePage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
   const featured = products.slice(0, 4);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -125,7 +125,7 @@ export default function HomePage() {
                   </div>
                 ) : (
                   <Link
-                    href="/products"
+                    href={localize("/products")}
                     className="relative mt-7 inline-flex items-center gap-2 text-[13px] font-bold"
                     style={{ color: cat.ctaColor }}
                   >
@@ -149,7 +149,7 @@ export default function HomePage() {
               </h2>
             </div>
             <Link
-              href="/products"
+              href={localize("/products")}
               className="bg-ink text-white text-[13px] font-bold px-6 py-2.5 rounded-full whitespace-nowrap"
             >
               View All
@@ -200,7 +200,7 @@ export default function HomePage() {
               {t.home.dealer_heading}
             </h2>
             <p className="text-white/50 text-[15px] leading-relaxed max-w-sm mb-9">{t.home.dealer_sub}</p>
-            <Button href="/dealers/become-a-distributor" variant="primary">
+            <Button href={localize("/dealers/become-a-distributor")} variant="primary">
               {t.home.dealer_cta}
             </Button>
           </div>
@@ -238,7 +238,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-14 items-start lg:items-center">
           <div className="w-full lg:w-[440px] flex-shrink-0">
             <div className="relative h-72 sm:h-[400px]">
-              <Image src="/images/farm3.jpg" alt="Urvar farm" fill sizes="(max-width: 1024px) 100vw, 440px" className="object-cover" />
+              <Image src="/images/farm3.webp" alt="Urvar farm" fill sizes="(max-width: 1024px) 100vw, 440px" className="object-cover" />
             </div>
           </div>
           <div className="flex-1 min-w-0">
@@ -257,7 +257,7 @@ export default function HomePage() {
                 </span>
               ))}
             </div>
-            <Button href="/about" variant="primary" className="!bg-urvar-dark hover:!bg-[#0c3a28]">
+            <Button href={localize("/about")} variant="primary" className="!bg-urvar-dark hover:!bg-[#0c3a28]">
               {t.home.about_cta}
             </Button>
           </div>
@@ -307,7 +307,7 @@ export default function HomePage() {
             <h3 className="font-bold text-ink text-lg uppercase tracking-[0.02em] mb-2.5">{t.home.for_farmers}</h3>
             <p className="text-mute text-sm leading-relaxed mb-5.5">{t.home.for_farmers_sub}</p>
             <div className="flex gap-2.5 flex-wrap">
-              <Button href="/contact" variant="primary">
+              <Button href={localize("/contact")} variant="primary">
                 {t.home.contact_cta}
               </Button>
               <Button href="https://wa.me/919035708943" variant="secondary" target="_blank" rel="noopener noreferrer">
@@ -318,7 +318,7 @@ export default function HomePage() {
           <div className="bg-urvar-dark p-9">
             <h3 className="font-bold text-white text-lg uppercase tracking-[0.02em] mb-2.5">{t.home.for_dealers}</h3>
             <p className="text-white/62 text-sm leading-relaxed mb-5.5">{t.home.for_dealers_sub}</p>
-            <Button href="/dealers/become-a-distributor" variant="onDark">
+            <Button href={localize("/dealers/become-a-distributor")} variant="onDark">
               {t.home.dealer_cta}
             </Button>
           </div>

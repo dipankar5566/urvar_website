@@ -27,7 +27,7 @@ const posts: Post[] = [
     slug: "how-to-restore-soil-health",
     category: "Soil Health",
     date: "2026-02-10",
-    image: "/images/soil.jpg",
+    image: "/images/soil.webp",
     author: "Urvar Agronomy Team",
     relatedProductSlugs: ["vermicompost", "humic-acid-liquid"],
     en: {
@@ -65,7 +65,7 @@ const posts: Post[] = [
     slug: "zinc-boron-deficiency-symptoms-cure",
     category: "Micronutrients",
     date: "2026-03-05",
-    image: "/images/farm1.jpg",
+    image: "/images/farm1.webp",
     author: "Urvar Agronomy Team",
     relatedProductSlugs: ["zinc-edta", "boron-edta"],
     en: {
@@ -99,7 +99,7 @@ const posts: Post[] = [
     slug: "what-is-prom",
     category: "Organic Farming",
     date: "2026-04-01",
-    image: "/images/farm2.jpg",
+    image: "/images/farm2.webp",
     author: "Urvar Agronomy Team",
     relatedProductSlugs: ["prom", "prom-humic-enriched"],
     en: {

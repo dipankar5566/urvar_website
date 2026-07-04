@@ -7,7 +7,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export default function ManufacturingQualityPage() {
-  const { t } = useLang();
+  const { t, localize } = useLang();
 
   const steps = [
     { title: t.mfg.step1_title, body: t.mfg.step1_body },
@@ -25,11 +25,11 @@ export default function ManufacturingQualityPage() {
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+            <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
             <span className="mx-2">/</span>
-            <Link href="/about" className="hover:text-white">
+            <Link href={localize("/about")} className="hover:text-white">
               {t.nav.about}
             </Link>
             <span className="mx-2">/</span>
@@ -87,10 +87,10 @@ export default function ManufacturingQualityPage() {
             <h3 className="text-xl font-bold text-urvar-dark">{t.mfg.cta_heading}</h3>
             <p className="mt-2 text-neutral-600">{t.mfg.cta_sub}</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Button href="/contact" variant="primary">
+              <Button href={localize("/contact")} variant="primary">
                 {t.home.contact_cta}
               </Button>
-              <Button href="/certificates" variant="secondary">
+              <Button href={localize("/certificates")} variant="secondary">
                 {t.certificates.heading}
               </Button>
             </div>

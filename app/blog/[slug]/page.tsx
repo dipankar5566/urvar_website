@@ -21,11 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.en.excerpt,
     alternates: {
       canonical: `/blog/${slug}`,
+      languages: {
+        "en-IN": `/blog/${slug}`,
+        "bn-IN": `/bn/blog/${slug}`,
+        "x-default": `/blog/${slug}`,
+      },
     },
     openGraph: {
       title: post.en.title,
       description: post.en.excerpt,
-      images: [{ url: post.image }],
+      images: [{ url: post.image.replace(/\.webp$/, ".jpg") }],
       type: "article",
     },
   };

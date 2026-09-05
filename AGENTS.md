@@ -6,26 +6,28 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Deployment
 
-Live at https://urvarindia.com on BigRock Cloud Hosting (cPanel), which has
-**no Node.js available** on this plan. The site is deployed as a static
-export (`output: "export"` in `next.config.ts`) — there is no server, no
-API routes, no on-the-fly image optimization. See
-`docs/deployment-bigrock-cloud.md` for the full story and
-`scripts/deploy.sh` for the redeploy command (`npm run build` + `rsync` to
-`public_html`, no build step on the server).
+Live at https://www.urvarindia.com and https://urvarindia.com, served as a
+full Next.js server (`next start`) run under PM2 on a local Windows PC,
+fronted by a dedicated Cloudflare Tunnel (`urvar-website`, Windows service
+`CloudflaredWebsite`) — the same pattern used by the other Urvar apps on
+that machine (`hr.urvarindia.com`, `erp.urvarindia.com`). See
+`docs/deployment-cloudflare-tunnel.md` for the full setup and
+`scripts/deploy-local.ps1` for the redeploy command (`git pull` + `npm ci`
++ `npm run build` + `pm2 restart urvar-website`).
 
-Practical implications for any future change:
-- Don't add API routes, middleware, or anything else needing a Node
-  server — it won't run here. The Kisan Saathi chatbot (`/api/chat`) was
-  removed for exactly this reason; it's recoverable from git history if
-  this site ever moves to Node-capable hosting.
-- `app/robots.ts` and `app/sitemap.ts` need `export const dynamic =
-  "force-static"` — static export fails the build without it.
-- New dynamic routes need `generateStaticParams` (already the pattern
-  used throughout `app/`) since there's no server-side rendering at
-  request time.
-- `next/image` runs with `unoptimized: true` — no automatic AVIF/WebP
-  conversion, images are served as-is.
+The previous BigRock cPanel static-export deployment (no Node.js
+available there) is retired as the live host but kept as a documented
+fallback — see `docs/deployment-bigrock-cloud.md` (superseded) and
+`scripts/deploy.sh` if it's ever needed again. Since the site now runs on
+a real Node server:
+- API routes and middleware are viable again — the Kisan Saathi chatbot
+  (`/api/chat`) was removed only because of the old static-export
+  constraint and is recoverable from git history if wanted.
+- `app/robots.ts` and `app/sitemap.ts` keep `export const dynamic =
+  "force-static"` — harmless under server mode, no need to remove it.
+- `next/image` still runs with `unoptimized: true` for now (unchanged
+  from the static-export config) — revisit if on-the-fly image
+  optimization is wanted later.
 
 # Localization (EN at /, Bengali at /bn/*)
 

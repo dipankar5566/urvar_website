@@ -1,5 +1,10 @@
 # Deployed to BigRock Cloud Hosting (static export)
 
+> **Superseded.** This is no longer the live deployment — the site now
+> runs as a full Next.js server on a local PC behind a Cloudflare Tunnel.
+> See `docs/deployment-cloudflare-tunnel.md`. This doc and
+> `scripts/deploy.sh` are kept as a documented fallback path only.
+
 Live at https://urvarindia.com, hosted on a BigRock Cloud Hosting (cPanel)
 account, domain registered at BigRock too.
 

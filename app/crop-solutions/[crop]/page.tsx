@@ -40,5 +40,29 @@ export default async function CropPage({ params }: Props) {
   const crop = cropBySlug(slug);
   if (!crop) notFound();
 
-  return <CropClient slug={slug} />;
+  const name = en.crops[crop.nameKey];
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://urvarindia.com/" },
+      { "@type": "ListItem", position: 2, name: "Crop Solutions", item: "https://urvarindia.com/crop-solutions" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name,
+        item: `https://urvarindia.com/crop-solutions/${slug}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CropClient slug={slug} />
+    </>
+  );
 }

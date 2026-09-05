@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   name: "Urvar Natural Pvt. Ltd.",
   url: "https://urvarindia.com",
   logo: "https://urvarindia.com/logo.svg",
@@ -73,6 +73,10 @@ const organizationJsonLd = {
     postalCode: "700121",
     addressCountry: "IN",
   },
+  areaServed: [
+    { "@type": "State", name: "West Bengal" },
+    { "@type": "Country", name: "India" },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-90357-08943",

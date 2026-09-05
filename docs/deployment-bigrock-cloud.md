@@ -24,7 +24,15 @@ server, the fix was to drop that requirement entirely:
 - `next.config.ts` sets `output: "export"` and `trailingSlash: true`
   (the latter avoids an Apache directory-redirect/403 conflict between
   `route.html` and a same-named `route/` directory used for nested
-  dynamic routes)
+  dynamic routes). **Note:** as of the Cloudflare Tunnel migration,
+  `trailingSlash: true` has been removed from the live `next.config.ts`
+  (canonicals/sitemap were already written without trailing slashes, and
+  the setting was fragmenting URLs in Google Search Console). If this
+  fallback is ever reactivated, restore `trailingSlash: true` alongside
+  `output: "export"`. The agent-discovery `Link` header also moved from
+  `public/.htaccess` (deleted) to a `headers()` entry in `next.config.ts`,
+  which has no effect under `output: "export"` — this fallback would need
+  an equivalent `.htaccess` rule re-added for that header to work again.
 - `images.unoptimized: true`, since the on-the-fly image optimizer also
   needs a server
 - `app/api/chat/route.ts` removed (recoverable from git history — see

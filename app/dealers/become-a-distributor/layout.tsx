@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-const title = "Become a Distributor – Urvar Natural Pvt. Ltd.";
+const title = "Urvar Natural Dealership – Apply for Distributorship";
 const description =
-  "Partner with Urvar Natural — a fast-growing organic & biological agri-inputs brand. Attractive margins, marketing & field support, growing demand across West Bengal, Maharashtra, Karnataka and Uttar Pradesh. Apply for a dealership today.";
+  "Become an Urvar Natural distributor: attractive margins, marketing support & field training on a fast-growing organic fertilizer brand. Territories open in West Bengal, Maharashtra, Karnataka & UP — apply in 2 minutes.";
 
 export const metadata: Metadata = {
   title,

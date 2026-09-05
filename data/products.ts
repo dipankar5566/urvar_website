@@ -82,9 +82,9 @@ const products: Product[] = [
   {
     slug: "prom",
     name: "PROM – Phosphate Rich Organic Manure",
-    tagline: "High phosphorus organic manure for vigorous root development",
+    tagline: "Phosphate-rich organic manure for vigorous root development and higher yield",
     description:
-      "Urvar PROM is a fortified organic manure enriched with high available phosphorus to support vigorous root development and early crop establishment. It enhances nutrient solubility, improves soil biological activity, and increases phosphorus efficiency in the rhizosphere.",
+      "Urvar PROM (Phosphate Rich Organic Manure) is a fortified organic fertilizer enriched with high available phosphate to support vigorous root development and early crop establishment. As a phosphate-rich alternative to conventional DAP/SSP, it enhances nutrient solubility, improves soil biological activity, and increases phosphorus-use efficiency in the rhizosphere — benefiting flowering, fruit set, and overall crop vigor.",
     category: "Phosphate Fertilizers",
     image: "/products/prom.webp",
     benefits: [

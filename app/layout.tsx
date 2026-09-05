@@ -23,9 +23,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://urvarindia.com"),
-  title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
+  title: "Urvar Natural – Organic Fertilizer Manufacturer, West Bengal",
   description:
-    "Urvar Natural Pvt. Ltd. provides science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity. Based in West Bengal, India.",
+    "Official site of Urvar Natural Pvt. Ltd. — manufacturer of organic manures, PROM, bio-stimulants & micronutrients. Lab-tested, science-backed inputs trusted by farmers and distributors across India.",
   keywords: "organic fertilizer, vermicompost, biofertilizer, PROM, humic acid, West Bengal, Urvar Natural",
   alternates: {
     canonical: "/",
@@ -40,16 +40,16 @@ export const metadata: Metadata = {
     siteName: "Urvar Natural",
     locale: "en_IN",
     url: "/",
-    title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
+    title: "Urvar Natural – Organic Fertilizer Manufacturer, West Bengal",
     description:
-      "Science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity. Based in West Bengal, India.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Urvar Natural – Organic Fertilizers & Bio-Stimulants" }],
+      "Official site of Urvar Natural Pvt. Ltd. — manufacturer of organic manures, PROM, bio-stimulants & micronutrients. Lab-tested, science-backed inputs trusted by farmers and distributors across India.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Urvar Natural – Organic Fertilizer Manufacturer, West Bengal" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Urvar Natural – Organic Fertilizers & Bio-Stimulants",
+    title: "Urvar Natural – Organic Fertilizer Manufacturer, West Bengal",
     description:
-      "Urvar Natural Pvt. Ltd. provides science-driven organic fertilizers and bio-stimulants to restore soil health and boost crop productivity.",
+      "Official site of Urvar Natural Pvt. Ltd. — manufacturer of organic manures, PROM, bio-stimulants & micronutrients. Lab-tested, science-backed inputs.",
     images: ["/og-image.jpg"],
   },
   ...(process.env.GSC_VERIFICATION

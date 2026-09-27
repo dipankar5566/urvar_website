@@ -1,0 +1,8 @@
+{
+  "name": "@urvar/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build-only packaging of the Urvar website's real components for claude.ai/design sync. Sources live in ../../components; see ../NOTES.md.",
+  "module": "dist/index.js",
+  "types": "types/.design-sync/pkg/src/index.d.ts"
+}

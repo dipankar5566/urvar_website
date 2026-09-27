@@ -1,0 +1,29 @@
+{
+  "projectId": "05644eaa-bb1e-4dc7-ac12-d0470a4a5bba",
+  "shape": "package",
+  "pkg": "@urvar/design-system",
+  "globalName": "UrvarDS",
+  "entry": ".design-sync/pkg/dist/index.js",
+  "buildCmd": "node .design-sync/pkg/build.mjs",
+  "srcDir": "../../components",
+  "cssEntry": "dist/styles.css",
+  "extraFonts": ["dist/fonts/fonts.css"],
+  "docsDir": "../docs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "componentSrcMap": {
+    "LangProvider": null
+  },
+  "dtsPropsFor": {
+    "Button": "/** \"primary\" (default) | \"secondary\" | \"ghost\" | \"onDark\" (use on urvar-dark / photo backgrounds) */ variant?: \"primary\" | \"secondary\" | \"ghost\" | \"onDark\"; /** \"sm\" 40px | \"md\" 44px (default) | \"lg\" 52px */ size?: \"sm\" | \"md\" | \"lg\"; className?: string; children: React.ReactNode; /** Renders an <a> when set; otherwise a <button>. */ href?: string; /** Link only: e.g. \"_blank\" for WhatsApp/external. */ target?: string; rel?: string; /** Button only. */ type?: \"button\" | \"submit\" | \"reset\"; disabled?: boolean; onClick?: (event: React.MouseEvent<HTMLElement>) => void; id?: string; style?: React.CSSProperties; \"aria-label\"?: string;",
+    "ProductCard": "/** One entry of window.UrvarDS.products - never invent products. */ product: { slug: string; name: string; tagline: string; description: string; category: \"Organic Manures\" | \"Phosphate Fertilizers\" | \"Bio-Stimulants\" | \"Micronutrients\"; image: string; benefits: string[]; nutrients: { parameter: string; value: string }[]; dosages: { crop: string; dose: string; method: string }[]; testReportFile?: string }; /** \"link\" (default, 'Learn More ->') | \"pill\" (outlined pill) */ ctaVariant?: \"link\" | \"pill\";"
+  },
+  "provider": {
+    "component": "LangProvider"
+  },
+  "overrides": {
+    "Hero": { "cardMode": "single", "viewport": "1200x900" },
+    "Navbar": { "cardMode": "column" },
+    "Footer": { "cardMode": "single", "viewport": "1200x520" },
+    "WhatsAppButton": { "cardMode": "single", "viewport": "480x260" }
+  }
+}

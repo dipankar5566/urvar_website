@@ -56,7 +56,7 @@ await esbuild.build({
   jsx: "automatic",
   external: ["react", "react-dom", "react/jsx-runtime", "react-dom/client"],
   // Forms read NEXT_PUBLIC_* env at submit time; there is no `process` in the browser.
-  define: { "process.env": "{}" },
+  define: { "process.env": "{}", __URVAR_IMG_MAP__: process.env.URVAR_IMG_MAP || "{}" },
   plugins: [aliasPlugin],
   logLevel: "warning",
 });

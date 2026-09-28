@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      { source: "/crop-solutions/fruit-crops", destination: "/crop-solutions", permanent: true },
+      { source: "/bn/crop-solutions/fruit-crops", destination: "/bn/crop-solutions", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

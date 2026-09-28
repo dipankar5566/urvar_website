@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import crops, { cropBySlug } from "@/data/crops";
 import en from "@/messages/en";
 import CropClient from "./CropClient";
+import CropJsonLd from "./CropJsonLd";
 
 type Props = { params: Promise<{ crop: string }> };
 
@@ -16,9 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!crop) return {};
 
   const name = en.crops[crop.nameKey];
+  const title = `${name} Organic Fertilizer Schedule – Stage-wise Guide | Urvar Natural`;
+  const description = `${en.crops[crop.introKey]} Stage timing from agricultural-university research, with Urvar doses per katha, bigha and acre.`;
   return {
-    title: `${name} Crop Solution – Urvar Natural Pvt. Ltd.`,
-    description: en.crops[crop.introKey],
+    title,
+    description,
     alternates: {
       canonical: `/crop-solutions/${slug}`,
       languages: {
@@ -28,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: `${name} Crop Solution – Urvar Natural`,
-      description: en.crops[crop.introKey],
+      title,
+      description,
       images: [{ url: crop.image.replace(/\.webp$/, ".jpg") }],
     },
   };
@@ -40,28 +43,9 @@ export default async function CropPage({ params }: Props) {
   const crop = cropBySlug(slug);
   if (!crop) notFound();
 
-  const name = en.crops[crop.nameKey];
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://urvarindia.com/" },
-      { "@type": "ListItem", position: 2, name: "Crop Solutions", item: "https://urvarindia.com/crop-solutions" },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name,
-        item: `https://urvarindia.com/crop-solutions/${slug}`,
-      },
-    ],
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <CropJsonLd crop={crop} lang="en" />
       <CropClient slug={slug} />
     </>
   );

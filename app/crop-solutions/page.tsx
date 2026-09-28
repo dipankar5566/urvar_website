@@ -1,66 +1,85 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 import Button from "@/components/ui/Button";
-import crops from "@/data/crops";
+import CropCard from "@/components/crops/CropCard";
+import crops, { seasonOrder } from "@/data/crops";
+import { whatsappHref } from "@/lib/cropPage";
 
 export default function CropSolutionsPage() {
   const { t, localize } = useLang();
+  const wa = whatsappHref(t.crops.wa_text_generic);
+  const groups = seasonOrder
+    .map((season) => ({ season, crops: crops.filter((c) => c.season === season) }))
+    .filter((g) => g.crops.length > 0);
 
   return (
     <>
-      <section className="bg-[#104C36] pt-14 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-[11px] font-medium text-[#4ade80] tracking-[2px] uppercase mb-3">Nutrition Programs</p>
-          <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[44px] sm:text-[68px] leading-[1.0] mb-2.5">
-            {t.crops.hub_heading}
-          </h1>
-          <p className="text-white/62 text-base max-w-[540px] leading-relaxed">{t.crops.hub_sub}</p>
+      <section className="bg-urvar-dark px-4 sm:px-6 lg:px-8 pt-10 pb-8 sm:pt-16 sm:pb-14">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-16">
+          <div className="flex flex-col gap-3.5 max-w-[700px]">
+            <p className="text-[11px] font-semibold tracking-[2px] uppercase text-[#4ade80]">{t.crops.hub_eyebrow}</p>
+            <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[52px] sm:text-[88px] leading-[0.95]">
+              {t.crops.hub_heading}
+            </h1>
+            <p className="text-[15px] sm:text-[17px] leading-relaxed text-white/80">{t.crops.hub_sub}</p>
+          </div>
+          <div className="flex flex-col gap-2.5 lg:items-end">
+            <Button href={wa} variant="onDark" size="lg" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              {t.crops.hub_cta}
+            </Button>
+            <span className="text-[13px] text-white/70">{t.crops.hub_cta_note}</span>
+          </div>
         </div>
       </section>
 
-      <div className="bg-canvas border-b border-hairline py-5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-[11px] font-bold text-stone tracking-[1.5px] uppercase mb-3.5">{t.crops.select_crop}</p>
-          <div className="flex flex-wrap gap-2">
-            {crops.map((crop) => (
-              <Link
-                key={crop.slug}
-                href={localize(`/crop-solutions/${crop.slug}`)}
-                className="flex items-center gap-2 pl-[7px] pr-3.5 py-[7px] rounded-lg border border-hairline hover:border-urvar-green transition-colors flex-shrink-0"
-              >
-                <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 bg-soft-cloud">
-                  <Image
-                    src={crop.image}
-                    alt={t.crops[crop.nameKey]}
-                    fill
-                    sizes="28px"
-                    className="object-cover"
-                  />
-                </div>
-                <span className="text-[13px] font-bold text-charcoal whitespace-nowrap">
-                  {t.crops[crop.nameKey]}
-                </span>
-              </Link>
-            ))}
-          </div>
+      <nav aria-label={t.crops.hub_heading} className="bg-canvas border-b border-hairline px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto flex gap-2 overflow-x-auto py-3 sm:py-0">
+          {groups.map((g) => (
+            <a
+              key={g.season}
+              href={`#${g.season}`}
+              className="flex-none inline-flex items-center min-h-[44px] px-4 rounded-full border border-hairline sm:rounded-none sm:border-0 sm:border-b-2 sm:border-transparent sm:px-3.5 sm:min-h-[52px] text-[13px] sm:text-sm font-semibold text-charcoal hover:text-ink whitespace-nowrap"
+            >
+              {t.crops[`season_${g.season}`]}
+              <span className="ml-1.5 text-xs text-mute">{g.crops.length}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <div className="px-4 sm:px-6 lg:px-8 pt-8 pb-12 sm:pt-14 sm:pb-[72px]">
+        <div className="max-w-6xl mx-auto flex flex-col gap-10 sm:gap-14">
+          {groups.map((g) => (
+            <section key={g.season} id={g.season} className="scroll-mt-24 flex flex-col gap-3.5 sm:gap-5">
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-4 border-b border-hairline pb-2.5 sm:pb-3">
+                <h2 className="font-[family-name:var(--font-campaign)] uppercase text-ink text-[32px] sm:text-[40px] leading-none">
+                  {t.crops[`season_${g.season}`]}
+                </h2>
+                <span className="text-[13px] sm:text-sm text-mute">{t.crops[`season_${g.season}_desc`]}</span>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+                {g.crops.map((crop) => (
+                  <CropCard key={crop.slug} crop={crop} />
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       </div>
 
-      <section className="bg-urvar-earth-light py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-[#d5ccbe] text-center">
-        <div className="max-w-lg mx-auto">
-          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[28px] sm:text-[36px] leading-[1.1] mb-3">
+      <section className="bg-urvar-earth-light border-t border-[#d5ccbe] px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="max-w-lg mx-auto flex flex-col sm:items-center gap-3 sm:text-center">
+          <h2 className="font-[family-name:var(--font-campaign)] uppercase text-urvar-dark text-[34px] sm:text-[44px] leading-[1.05]">
             {t.crops.cta_heading}
           </h2>
-          <p className="text-[#514e45] text-[15px] leading-relaxed mb-7">{t.crops.cta_sub}</p>
-          <div className="flex justify-center gap-3 flex-wrap">
-            <Button href={localize("/contact")} variant="primary">
-              {t.home.contact_cta}
-            </Button>
-            <Button href="https://wa.me/919035708943" variant="secondary" target="_blank" rel="noopener noreferrer">
+          <p className="text-[15px] leading-relaxed text-[#514e45] mb-3 sm:mb-4">{t.crops.cta_sub}</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button href={wa} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
               {t.contact.whatsapp}
+            </Button>
+            <Button href={localize("/contact")} variant="secondary" className="w-full sm:w-auto">
+              {t.home.contact_cta}
             </Button>
           </div>
         </div>

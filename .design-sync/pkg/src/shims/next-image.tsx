@@ -5,6 +5,11 @@ import type { CSSProperties, ImgHTMLAttributes } from "react";
 
 const ORIGIN = "https://www.urvarindia.com";
 
+// Build-time path → URL overrides (URVAR_IMG_MAP env in build.mjs) for hosts
+// that can't reach the live site, e.g. a sandboxed design canvas.
+declare const __URVAR_IMG_MAP__: Record<string, string>;
+const IMG_MAP: Record<string, string> = typeof __URVAR_IMG_MAP__ !== "undefined" ? __URVAR_IMG_MAP__ : {};
+
 type StaticSrc = { src: string; width?: number; height?: number };
 
 export type ImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "width" | "height"> & {
@@ -37,7 +42,7 @@ export default function Image({
   ...rest
 }: ImageProps) {
   const raw = typeof src === "string" ? src : src.src;
-  const url = raw.startsWith("/") ? ORIGIN + raw : raw;
+  const url = IMG_MAP[raw] ?? (raw.startsWith("/") ? ORIGIN + raw : raw);
   const fillStyle: CSSProperties = fill
     ? { position: "absolute", inset: 0, width: "100%", height: "100%" }
     : {};

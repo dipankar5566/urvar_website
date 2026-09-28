@@ -190,14 +190,63 @@ const en = {
   },
   crops: {
     hub_heading: "Crop Solutions",
-    hub_sub: "Stage-by-stage nutrition programs — choose your crop to see what to apply and when.",
-    select_crop: "Select your crop",
+    hub_eyebrow: "Nutrition programs",
+    hub_sub: "Stage-by-stage nutrition guides: what to apply and when, with Urvar doses per katha, bigha and acre.",
+    hub_cta: "Ask for a plan on WhatsApp",
+    hub_cta_note: "Not sure which program fits? Ask us.",
+    season_kharif: "Kharif",
+    season_kharif_desc: "Monsoon-season crops",
+    season_rabi: "Rabi",
+    season_rabi_desc: "Winter-season crops",
+    season_perennial: "Perennial & plantation",
+    season_perennial_desc: "Orchards and plantation crops",
+    season_year_round: "Year-round",
+    season_year_round_desc: "Grown across seasons",
+    view_guide: "View season guide →",
     cta_heading: "Need help building a program for your field?",
     cta_sub: "Talk to our team for crop-specific advice, dosage and pricing.",
-    stage_land_prep: "Land Preparation",
-    stage_vegetative: "Vegetative Growth",
-    stage_flowering: "Flowering",
-    stage_maturity: "Maturity & Harvest",
+    detail_eyebrow: "Season guide",
+    season_label: "Season: {season}",
+    stages_count: "{stages} stages · {products} Urvar inputs",
+    get_plan: "Get a {crop} plan on WhatsApp",
+    see_schedule: "See the schedule",
+    schedule_eyebrow: "Season schedule",
+    schedule_heading: "What to apply, and when",
+    schedule_sub:
+      "Stage timing comes from agricultural-university research (cited). Doses are Urvar's own label doses, shown per katha with bigha and acre equivalents.",
+    units_title: "Units",
+    units_body: "1 bigha = 20 katha (West Bengal) · 1 acre ≈ 60.5 katha",
+    per_katha: "per katha",
+    per_bigha: "per bigha",
+    per_acre: "per acre",
+    label_row_exact: "Label dose for {row}",
+    label_row_closest: "Label dose for {row} (closest crop row)",
+    label_method: "Label dose: foliar spray",
+    ask_dose: "Ask us for the dose for your field",
+    deficiency_eyebrow: "Deficiency guide",
+    deficiency_heading: "Spot it, fix it",
+    deficiency_sub: "General symptoms that apply across crops. Confirm with a soil or leaf test before treating.",
+    urvar_fix: "Urvar fix",
+    nutrient_zinc: "Zinc",
+    nutrient_boron: "Boron",
+    nutrient_phosphorus: "Phosphorus",
+    faq_eyebrow: "{crop} FAQ",
+    faq_heading: "Common questions",
+    faq_convert_q: "How do I convert a per-katha dose to bigha or acre?",
+    faq_convert_a:
+      "Multiply by 20 for a West Bengal bigha (1 bigha = 20 katha), or by about 60.5 for an acre. Every dose on this page already shows all three.",
+    faq_products_q: "Which Urvar products does the {crop} program use?",
+    faq_plan_q: "Can I get a plan for my own field?",
+    faq_plan_a:
+      "Yes. Message us on WhatsApp with your district, field size and planting date, and our team will reply with a plan.",
+    sources_heading: "Sources",
+    sources_doses:
+      "Doses: Urvar Natural product labels. The Flowering Booster's timing follows its label guidance for flowering crops.",
+    plan_heading: "Get a {crop} plan for your field",
+    plan_sub:
+      "Tell us your district, field size and planting date on WhatsApp. Our team replies with a stage-by-stage plan and pricing.",
+    wa_text: "Hello Urvar Natural, I need a nutrition plan for my {crop} crop.",
+    wa_text_generic: "Hello Urvar Natural, I need a nutrition plan for my crop.",
     rice_name: "Rice / Paddy",
     rice_intro:
       "Paddy thrives on healthy soil biology and balanced nutrition. Urvar's program rebuilds organic matter at land prep, drives tillering with humic acid and zinc, and supports grain filling at panicle stage.",
@@ -213,9 +262,30 @@ const en = {
     mustard_name: "Mustard",
     mustard_intro:
       "Mustard is sensitive to sulphur and boron. Urvar's program strengthens early growth and boosts flowering and pod formation with targeted boron and humic inputs.",
-    fruit_name: "Fruit Crops",
-    fruit_intro:
-      "Orchards and fruit crops benefit from sustained soil health and micronutrient balance. This program supports root development, flowering, and fruit quality across the season.",
+    jute_name: "Jute",
+    jute_intro:
+      "Jute is West Bengal's leading fibre crop. Urvar's program builds soil organic matter at sowing and supports fibre development with humic acid through the growing season.",
+    maize_name: "Maize",
+    maize_intro:
+      "Winter maize responds strongly to a well-timed nitrogen schedule. Urvar's program supports early growth and corrects zinc deficiency across the season's top dressings.",
+    pulses_name: "Pulses",
+    pulses_intro:
+      "Lentil (masur) is West Bengal's leading rabi pulse. Urvar's program uses a light basal dose at sowing and targeted zinc and boron sprays timed to flowering and pod development.",
+    flowers_name: "Flowers",
+    flowers_intro:
+      "Marigold thrives with a strong root system at transplanting and steady micronutrients through to flowering. Urvar's program supports branching, boosts flower set, and keeps blooms coming through the picking season.",
+    mango_name: "Mango",
+    mango_intro:
+      "Mango needs basal manuring after harvest and targeted boron at flowering. Urvar's program times a foliar boost to panicle emergence for stronger fruit-set and quality.",
+    litchi_name: "Litchi",
+    litchi_intro:
+      "Litchi's flowering and fruit-set benefit from timed foliar sprays through the pre-flowering months. Urvar's program supports this with zinc, boron and humic inputs.",
+    tea_name: "Tea",
+    tea_intro:
+      "Tea is a perennial bush grown across North Bengal's Dooars, Terai and Darjeeling gardens. This program supports young bushes at establishment and keeps the plant fed through the long plucking season.",
+    pineapple_name: "Pineapple",
+    pineapple_intro:
+      "Pineapple is West Bengal's leading fruit export from its northern districts. This program follows a proven schedule from planting through flowering to harvest.",
   },
   contact: {
     heading: "Get in Touch",

@@ -48,3 +48,6 @@ ds-bundle/
 .design-sync/node_modules
 .design-sync/pkg/dist/
 .design-sync/pkg/types/
+
+# blog admin content store (posts + uploaded images) — back this up
+/storage/

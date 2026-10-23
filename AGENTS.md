@@ -15,6 +15,18 @@ that machine (`hr.urvarindia.com`, `erp.urvarindia.com`). See
 `scripts/deploy-local.ps1` for the redeploy command (`git pull` + `npm ci`
 + `npm run build` + `pm2 restart urvar-website`).
 
+**Known issue — `deploy-local.ps1` fails on Windows while the site runs.**
+The running `next start` process keeps
+`node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node`
+locked, so `npm ci` dies with `EPERM ... unlink` *after* it has already
+deleted part of `node_modules` (the live process keeps serving from memory,
+but any restart would then fail). Until the script is fixed, deploy
+manually in this order: `git pull` → `pm2 stop urvar-website` → `npm ci`
+→ `npm run build` → `pm2 start urvar-website` (~2–3 min downtime). Never
+build or `npm ci` in `D:\urvar_website` for testing — it is the live
+folder; build a copy elsewhere (with its own `npm ci`, since Turbopack
+rejects a junctioned `node_modules`).
+
 The previous BigRock cPanel static-export deployment (no Node.js
 available there) is retired as the live host but kept as a documented
 fallback — see `docs/deployment-bigrock-cloud.md` (superseded) and
@@ -54,3 +66,26 @@ Video IDs live in `data/videos.ts`; titles/descriptions are localized
 through `messages/en.ts` / `messages/bn.ts` rather than the data file,
 consistent with how the rest of the site keeps translated copy in
 `messages/`.
+
+# Blog (admin-managed, no rebuild)
+
+Posts are written at `/admin/blog` (single-password login, TipTap
+rich-text editor, image upload) and stored as one JSON file per post under
+`BLOG_DATA_DIR` (default `./storage/blog`, gitignored) — not in git. That
+folder is the source of truth: back it up. `data/posts.ts` is only the
+seed written there when the store is first created. Public blog pages are
+prerendered and the save/delete server actions call
+`revalidatePath("/", "layout")`, so changes go live instantly. Uploaded
+images live in `storage/blog/media` and are served by
+`app/blog-media/[file]/route.ts` (files added to `public/` after build
+are not served by `next start`). Post HTML is sanitized on save
+(`lib/blog/sanitize.ts`) before being rendered with
+`dangerouslySetInnerHTML`. Admin requires `ADMIN_PASSWORD` and
+`ADMIN_SESSION_SECRET` (32+ chars) in `.env.local` (exists only on the
+hosting PC; login stays disabled while the password is the `CHANGE-ME`
+placeholder); admin pages must stay dynamic — `isAdmin()` reads cookies
+first, otherwise `next build` (no env vars) prerenders them as a permanent
+redirect to login. First-run seeding writes to a temp folder and renames
+it into place so parallel build workers never read a half-seeded store.
+User guide:
+`docs/blog-admin.md`.

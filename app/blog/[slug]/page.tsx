@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import posts, { postBySlug } from "@/data/posts";
+import { getPublishedPost, listPublishedPosts } from "@/lib/blog/store";
+import { ogImageFor } from "@/lib/blog/types";
 import BlogPostClient from "./BlogPostClient";
 
 type Props = { params: Promise<{ slug: string }> };
 
 const BASE_URL = "https://urvarindia.com";
 
-export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+// Posts published from /admin after the build render on first visit and are
+// then cached; the save action revalidates them.
+export async function generateStaticParams() {
+  return (await listPublishedPosts()).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = postBySlug(slug);
+  const post = await getPublishedPost(slug);
   if (!post) return {};
 
   return {
@@ -30,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.en.title,
       description: post.en.excerpt,
-      images: [{ url: post.image.replace(/\.webp$/, ".jpg") }],
+      images: [{ url: ogImageFor(post) }],
       type: "article",
     },
   };
@@ -38,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = postBySlug(slug);
+  const post = await getPublishedPost(slug);
   if (!post) notFound();
 
   const jsonLd = {
@@ -48,6 +51,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.en.excerpt,
     image: `${BASE_URL}${post.image}`,
     datePublished: post.date,
+    dateModified: post.updatedAt,
     author: { "@type": "Organization", name: post.author },
     publisher: {
       "@type": "Organization",
@@ -61,9 +65,9 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <BlogPostClient slug={slug} />
+      <BlogPostClient post={post} />
     </>
   );
 }

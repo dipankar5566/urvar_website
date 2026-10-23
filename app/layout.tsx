@@ -5,6 +5,7 @@ import { LangProvider } from "@/context/LangContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PublicChrome from "@/components/PublicChrome";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AnalyticsEvents from "@/components/AnalyticsEvents";
 
@@ -96,10 +97,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
         <AnalyticsEvents />
         <LangProvider>
-          <Navbar />
+          <PublicChrome>
+            <Navbar />
+          </PublicChrome>
           <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
+          <PublicChrome>
+            <Footer />
+            <WhatsAppButton />
+          </PublicChrome>
         </LangProvider>
       </body>
     </html>

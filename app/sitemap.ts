@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
 import products from "@/data/products";
 import crops from "@/data/crops";
-import posts from "@/data/posts";
+import { listPublishedPosts } from "@/lib/blog/store";
 import { allCategories, categoryMeta } from "@/lib/categories";
 
 const BASE_URL = "https://urvarindia.com";
 
+// Static, but revalidated by the blog admin's save action.
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const posts = await listPublishedPosts();
 
   const productUrls = products.map((p) => ({
     url: `${BASE_URL}/products/${p.slug}`,

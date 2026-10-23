@@ -2,19 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { useLang } from "@/context/LangContext";
 import ProductCard from "@/components/ProductCard";
 import Section from "@/components/ui/Section";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { postBySlug } from "@/data/posts";
+import type { Post } from "@/lib/blog/types";
 import products from "@/data/products";
 
-export default function BlogPostClient({ slug }: { slug: string }) {
+export default function BlogPostClient({ post }: { post: Post }) {
   const { t, lang, localize } = useLang();
-  const post = postBySlug(slug);
-  if (!post) notFound();
 
   const content = lang === "bn" && post.bn ? post.bn : post.en;
   const related = post.relatedProductSlugs
@@ -64,17 +61,8 @@ export default function BlogPostClient({ slug }: { slug: string }) {
       <Section bg="white" className="!pt-12">
         <article className="max-w-3xl mx-auto">
           <p className="text-lg text-neutral-700 leading-relaxed font-medium mb-6">{content.excerpt}</p>
-          {content.body.map((block, i) =>
-            block.type === "h2" ? (
-              <h2 key={i} className="text-2xl font-bold text-urvar-dark mt-8 mb-3">
-                {block.text}
-              </h2>
-            ) : (
-              <p key={i} className="text-neutral-700 leading-relaxed mb-4">
-                {block.text}
-              </p>
-            )
-          )}
+          {/* HTML is sanitized on save in app/admin/actions.ts. */}
+          <div className="blog-prose" dangerouslySetInnerHTML={{ __html: content.html }} />
 
           {related.length > 0 && (
             <div className="mt-12">

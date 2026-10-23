@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { postBySlug } from "@/data/posts";
+import { getPublishedPost } from "@/lib/blog/store";
+import { ogImageFor } from "@/lib/blog/types";
 
 export { default, generateStaticParams } from "../../../blog/[slug]/page";
 
@@ -7,7 +8,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = postBySlug(slug);
+  const post = await getPublishedPost(slug);
   if (!post) return {};
 
   const content = post.bn ?? post.en;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: content.title,
       description: content.excerpt,
       locale: "bn_IN",
-      images: [{ url: post.image.replace(/\.webp$/, ".jpg") }],
+      images: [{ url: ogImageFor(post) }],
       type: "article",
     },
   };

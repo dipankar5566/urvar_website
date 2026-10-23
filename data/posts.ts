@@ -1,28 +1,31 @@
-export interface PostBlock {
+// Seed content only. Live posts are managed from /admin/blog and stored on
+// disk by lib/blog/store.ts; these three are written there the first time
+// the store is empty, so a fresh checkout still has a populated blog.
+import type { Post, PostContent } from "@/lib/blog/types";
+
+interface SeedBlock {
   type: "p" | "h2";
   text: string;
 }
 
-export interface PostContent {
+interface SeedContent {
   title: string;
   excerpt: string;
-  body: PostBlock[];
+  body: SeedBlock[];
 }
 
-export interface Post {
+interface SeedPost {
   slug: string;
   category: string;
-  /** ISO date */
   date: string;
   image: string;
   author: string;
   relatedProductSlugs: string[];
-  en: PostContent;
-  /** Optional Bengali translation; falls back to English when absent. */
-  bn?: PostContent;
+  en: SeedContent;
+  bn?: SeedContent;
 }
 
-const posts: Post[] = [
+const posts: SeedPost[] = [
   {
     slug: "how-to-restore-soil-health",
     category: "Soil Health",
@@ -130,8 +133,24 @@ const posts: Post[] = [
   },
 ];
 
-export default posts;
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
 
-export function postBySlug(slug: string): Post | undefined {
-  return posts.find((p) => p.slug === slug);
+function toContent(c: SeedContent): PostContent {
+  return {
+    title: c.title,
+    excerpt: c.excerpt,
+    html: c.body.map((b) => `<${b.type}>${escapeHtml(b.text)}</${b.type}>`).join(""),
+  };
+}
+
+export function seedPosts(): Post[] {
+  return posts.map(({ en, bn, ...rest }) => ({
+    ...rest,
+    status: "published",
+    updatedAt: new Date(rest.date).toISOString(),
+    en: toContent(en),
+    ...(bn ? { bn: toContent(bn) } : {}),
+  }));
 }

@@ -59,10 +59,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...productUrls,
   ];
 
-  // Bengali mirror of every page lives under /bn/*.
+  // Bengali mirror of every page lives under /bn/*. The homepage's bn
+  // canonical is "/bn/" (trailing slash, see app/bn/page.tsx) so special-case it.
   const bnUrls: MetadataRoute.Sitemap = enUrls.map((u) => ({
     ...u,
-    url: u.url.replace(BASE_URL, `${BASE_URL}/bn`) || `${BASE_URL}/bn`,
+    url: u.url === BASE_URL ? `${BASE_URL}/bn/` : u.url.replace(BASE_URL, `${BASE_URL}/bn`),
   }));
 
   return [...enUrls, ...bnUrls];

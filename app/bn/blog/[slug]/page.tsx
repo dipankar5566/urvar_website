@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getPublishedPost } from "@/lib/blog/store";
 import { ogImageFor } from "@/lib/blog/types";
+import BlogPostClient from "../../../blog/[slug]/BlogPostClient";
+import BlogJsonLd from "../../../blog/[slug]/BlogJsonLd";
 
-export { default, generateStaticParams } from "../../../blog/[slug]/page";
+export { generateStaticParams } from "../../../blog/[slug]/page";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,4 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
     },
   };
+}
+
+export default async function BnBlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = await getPublishedPost(slug);
+  if (!post) notFound();
+
+  return (
+    <>
+      <BlogJsonLd post={post} lang="bn" />
+      <BlogPostClient post={post} />
+    </>
+  );
 }

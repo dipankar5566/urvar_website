@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { categoryBySlug, categoryMeta } from "@/lib/categories";
 import bn from "@/messages/bn";
+import CategoryClient from "../../../../products/category/[category]/CategoryClient";
+import CategoryJsonLd from "../../../../products/category/[category]/CategoryJsonLd";
 
-export { default, generateStaticParams } from "../../../../products/category/[category]/page";
+export { generateStaticParams } from "../../../../products/category/[category]/page";
 
 type Props = { params: Promise<{ category: string }> };
 
@@ -30,4 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     },
   };
+}
+
+export default async function BnCategoryPage({ params }: Props) {
+  const { category: slug } = await params;
+  const category = categoryBySlug(slug);
+  if (!category) notFound();
+
+  const name = bn.products[categoryMeta[category].nameKey];
+
+  return (
+    <>
+      <CategoryJsonLd name={name} slug={slug} lang="bn" />
+      <CategoryClient category={category} />
+    </>
+  );
 }

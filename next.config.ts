@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/",
+        source: "/:path*",
         headers: [
           { key: "Link", value: '</llms.txt>; rel="describedby"' },
         ],

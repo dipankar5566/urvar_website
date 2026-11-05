@@ -11,7 +11,7 @@
 
   /* Brand greens */
   --color-urvar-dark: #104C36;   /* primary / deep green */
-  --color-urvar-green: #009253;  /* brand green */
+  --color-urvar-green: #007A42;  /* brand green, darkened for WCAG AA text contrast (was #009253) */
   --color-urvar-leaf: #3FA535;   /* accent leaf-green */
   --color-urvar-light: #e8f5ee;  /* pale mint */
 

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!crop) return {};
 
   const name = en.crops[crop.nameKey];
-  const title = `${name} Organic Fertilizer Schedule – Stage-wise Guide | Urvar Natural`;
+  const title = `${name} Fertilizer Schedule | Urvar Natural`;
   const description = `${en.crops[crop.introKey]} Stage timing from agricultural-university research, with Urvar doses per katha, bigha and acre.`;
   return {
     title,

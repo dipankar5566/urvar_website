@@ -3,10 +3,9 @@ import { notFound } from "next/navigation";
 import { getPublishedPost, listPublishedPosts } from "@/lib/blog/store";
 import { ogImageFor } from "@/lib/blog/types";
 import BlogPostClient from "./BlogPostClient";
+import BlogJsonLd from "./BlogJsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
-
-const BASE_URL = "https://urvarindia.com";
 
 // Posts published from /admin after the build render on first visit and are
 // then cached; the save action revalidates them.
@@ -44,29 +43,9 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getPublishedPost(slug);
   if (!post) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.en.title,
-    description: post.en.excerpt,
-    image: `${BASE_URL}${post.image}`,
-    datePublished: post.date,
-    dateModified: post.updatedAt,
-    author: { "@type": "Organization", name: post.author },
-    publisher: {
-      "@type": "Organization",
-      name: "Urvar Natural Pvt. Ltd.",
-      logo: { "@type": "ImageObject", url: `${BASE_URL}/logo.svg` },
-    },
-    mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      <BlogJsonLd post={post} lang="en" />
       <BlogPostClient post={post} />
     </>
   );

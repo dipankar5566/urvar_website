@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!crop) return {};
 
   const name = bn.crops[crop.nameKey];
-  const title = `${name} জৈব সারের সময়সূচি – ধাপে ধাপে নির্দেশিকা | উর্বর ন্যাচারাল`;
+  const title = `${name} সারের সময়সূচি | উর্বর ন্যাচারাল`;
   const description = `${bn.crops[crop.introKey]} কৃষি বিশ্ববিদ্যালয়ের গবেষণা থেকে ধাপের সময়, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।`;
   return {
     title,

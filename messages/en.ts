@@ -31,7 +31,7 @@ const en = {
     about_heading: "About Urvar Natural",
     about_body:
       "Founded in 2023 in West Bengal, Urvar Natural Pvt. Ltd. is on a mission to transform Indian agriculture with certified organic fertilizers, bio-stimulants, and micronutrient solutions. We don't just sell inputs — we restore soils, empower farmers, and build a healthier food system from the ground up.",
-    about_cta: "Learn More",
+    about_cta: "Our Story",
     crop_heading: "Supporting Every Stage of Growth",
     crop_sub: "Urvar products are designed to support your crops from seed to harvest",
     contact_heading: "Get In Touch",

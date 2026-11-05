@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import products from "@/data/products";
+import ProductDetailClient from "../../../products/[slug]/ProductDetailClient";
+import ProductJsonLd from "../../../products/[slug]/ProductJsonLd";
 
-export { default, generateStaticParams } from "../../../products/[slug]/page";
+export { generateStaticParams } from "../../../products/[slug]/page";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,4 +31,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [{ url: product.image }],
     },
   };
+}
+
+export default async function BnProductDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
+  if (!product) notFound();
+
+  return (
+    <>
+      <ProductJsonLd product={product} lang="bn" />
+      <ProductDetailClient slug={slug} />
+    </>
+  );
 }

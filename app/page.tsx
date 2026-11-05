@@ -47,7 +47,7 @@ export default function HomePage() {
       labelColor: "#104C36",
       descColor: "#3a6b50",
       decorColor: "rgba(0,146,83,0.11)",
-      ctaColor: "#009253",
+      ctaColor: "#007A42",
     },
     {
       letter: "F",
@@ -55,10 +55,10 @@ export default function HomePage() {
       desc: t.home.cat_bio_desc,
       soon: true,
       bg: "#f5f5f5",
-      labelColor: "#999",
-      descColor: "#b0b0b0",
+      labelColor: "#666666",
+      descColor: "#6e6e6e",
       decorColor: "rgba(0,0,0,0.04)",
-      ctaColor: "#999",
+      ctaColor: "#666666",
     },
   ];
 
@@ -117,7 +117,7 @@ export default function HomePage() {
                   {cat.desc}
                 </p>
                 {cat.soon ? (
-                  <div className="relative mt-7 inline-flex items-center gap-2 opacity-38">
+                  <div className="relative mt-7 inline-flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: cat.labelColor }} />
                     <span className="text-[10px] font-bold uppercase tracking-[2px]" style={{ color: cat.labelColor }}>
                       {t.home.coming_soon}

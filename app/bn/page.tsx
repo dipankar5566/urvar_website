@@ -5,10 +5,10 @@ export const metadata: Metadata = {
   description:
     "মাটির স্বাস্থ্য পুনরুদ্ধার ও ফসলের ফলন বৃদ্ধির জন্য বিজ্ঞানভিত্তিক জৈব সার, বায়ো-স্টিমুল্যান্ট ও মাইক্রোনিউট্রিয়েন্ট। পশ্চিমবঙ্গ, ভারত।",
   alternates: {
-    canonical: "/bn/",
+    canonical: "/bn",
     languages: {
       "en-IN": "/",
-      "bn-IN": "/bn/",
+      "bn-IN": "/bn",
       "x-default": "/",
     },
   },

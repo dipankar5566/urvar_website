@@ -2,7 +2,7 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "হোম", item: "https://urvarindia.com/bn/" },
+    { "@type": "ListItem", position: 1, name: "হোম", item: "https://urvarindia.com/bn" },
     {
       "@type": "ListItem",
       position: 2,

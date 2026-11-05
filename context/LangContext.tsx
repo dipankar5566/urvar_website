@@ -39,13 +39,13 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     if (l === lang || typeof window === "undefined") return;
     const path = window.location.pathname;
     const target =
-      l === "bn" ? `/bn${path === "/" ? "/" : path}` : path.replace(/^\/bn/, "") || "/";
+      l === "bn" ? (path === "/" ? "/bn" : `/bn${path}`) : path.replace(/^\/bn/, "") || "/";
     window.location.assign(target);
   }
 
   function localize(href: string) {
     if (lang !== "bn" || !href.startsWith("/")) return href;
-    return href === "/" ? "/bn/" : `/bn${href}`;
+    return href === "/" ? "/bn" : `/bn${href}`;
   }
 
   return (

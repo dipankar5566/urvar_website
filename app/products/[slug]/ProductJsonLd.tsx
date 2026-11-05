@@ -39,7 +39,7 @@ export default function ProductJsonLd({ product, lang }: { product: Product; lan
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: t.nav.home, item: `${BASE_URL}${prefix}/` },
+      { "@type": "ListItem", position: 1, name: t.nav.home, item: `${BASE_URL}${prefix || "/"}` },
       {
         "@type": "ListItem",
         position: 2,

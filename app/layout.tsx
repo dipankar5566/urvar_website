@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       "en-IN": "/",
-      "bn-IN": "/bn/",
+      "bn-IN": "/bn",
       "x-default": "/",
     },
   },

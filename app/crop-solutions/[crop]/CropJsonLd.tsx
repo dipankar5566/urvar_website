@@ -14,7 +14,7 @@ export default function CropJsonLd({ crop, lang }: { crop: Crop; lang: Lang }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: t.nav.home, item: `${BASE_URL}${prefix}/` },
+      { "@type": "ListItem", position: 1, name: t.nav.home, item: `${BASE_URL}${prefix || "/"}` },
       { "@type": "ListItem", position: 2, name: t.crops.hub_heading, item: `${BASE_URL}${prefix}/crop-solutions` },
       { "@type": "ListItem", position: 3, name, item: `${BASE_URL}${prefix}/crop-solutions/${crop.slug}` },
     ],

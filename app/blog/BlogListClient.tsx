@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import Section from "@/components/ui/Section";
 import Badge from "@/components/ui/Badge";
 import type { Post } from "@/lib/blog/types";
@@ -12,9 +13,10 @@ export default function BlogListClient({ posts }: { posts: Post[] }) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.blog.heading, path: "/blog" }]} />
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+          <nav className="text-[13px] text-white/65 mb-5" aria-label="Breadcrumb">
             <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>

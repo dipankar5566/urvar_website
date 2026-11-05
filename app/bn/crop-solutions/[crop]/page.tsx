@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cropBySlug } from "@/data/crops";
 import bn from "@/messages/bn";
+import { cropMetaDescription } from "@/lib/cropPage";
+import { pageMeta } from "@/lib/seo";
 import CropClient from "../../../crop-solutions/[crop]/CropClient";
 import CropJsonLd from "../../../crop-solutions/[crop]/CropJsonLd";
 
@@ -14,27 +16,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const crop = cropBySlug(slug);
   if (!crop) return {};
 
-  const name = bn.crops[crop.nameKey];
-  const title = `${name} সারের সময়সূচি | উর্বর ন্যাচারাল`;
-  const description = `${bn.crops[crop.introKey]} কৃষি বিশ্ববিদ্যালয়ের গবেষণা থেকে ধাপের সময়, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।`;
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/bn/crop-solutions/${slug}`,
-      languages: {
-        "en-IN": `/crop-solutions/${slug}`,
-        "bn-IN": `/bn/crop-solutions/${slug}`,
-        "x-default": `/crop-solutions/${slug}`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      locale: "bn_IN",
-      images: [{ url: crop.image.replace(/\.webp$/, ".jpg") }],
-    },
-  };
+  return pageMeta({
+    lang: "bn",
+    path: `/crop-solutions/${slug}`,
+    title: `${bn.crops[crop.nameKey]} সারের সময়সূচি | উর্বর ন্যাচারাল`,
+    description: cropMetaDescription(crop, "bn", bn),
+    image: crop.image.replace(/\.webp$/, ".jpg"),
+  });
 }
 
 export default async function BnCropPage({ params }: Props) {

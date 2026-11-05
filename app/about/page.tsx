@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import VideoEmbed from "@/components/VideoEmbed";
 import videos from "@/data/videos";
 
@@ -22,6 +23,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.nav.about, path: "/about" }]} />
       {/* Hero */}
       <section className="relative min-h-[52vh] flex items-end overflow-hidden">
         <div className="absolute inset-0 bg-[#0a2018]">
@@ -193,7 +195,7 @@ export default function AboutPage() {
                 {t.about.certifications}
               </h2>
             </div>
-            <p className="text-white/38 text-sm max-w-xs leading-relaxed">
+            <p className="text-white/60 text-sm max-w-xs leading-relaxed">
               Government-recognised certifications backing every product we make.
             </p>
           </div>
@@ -214,7 +216,7 @@ export default function AboutPage() {
                       </span>
                     )}
                   </div>
-                  <p className="text-white/45 text-sm leading-relaxed">{cert.body}</p>
+                  <p className="text-white/60 text-sm leading-relaxed">{cert.body}</p>
                 </div>
               </div>
             ))}

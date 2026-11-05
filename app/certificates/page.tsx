@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -17,10 +18,11 @@ export default function CertificatesPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.certificates.heading, path: "/certificates" }]} />
       {/* Hero */}
       <section className="bg-[#104C36] pt-12 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <nav className="text-[13px] text-white/55 mb-5" aria-label="Breadcrumb">
+          <nav className="text-[13px] text-white/65 mb-5" aria-label="Breadcrumb">
             <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>

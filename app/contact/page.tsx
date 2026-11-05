@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import ContactForm from "@/components/ContactForm";
 
 export default function ContactPage() {
@@ -8,6 +9,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.nav.contact, path: "/contact" }]} />
       <section className="bg-[#104C36] py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-6xl mx-auto">
           <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[44px] sm:text-[68px] leading-[1.0]">
@@ -30,7 +32,7 @@ export default function ContactPage() {
           <div className="w-full lg:w-[320px] flex-shrink-0">
             <div className="border border-hairline">
               <div className="bg-canvas px-6 py-5.5 border-b border-hairline">
-                <p className="text-[11px] font-bold text-stone tracking-[1.5px] uppercase mb-2.5">{t.contact.or_call}</p>
+                <p className="text-[11px] font-bold text-mute tracking-[1.5px] uppercase mb-2.5">{t.contact.or_call}</p>
                 <div className="flex flex-col gap-2">
                   <a href="tel:+919035708943" className="text-urvar-green font-bold text-sm">
                     +91 90357 08943
@@ -41,13 +43,13 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="bg-canvas px-6 py-5.5 border-b border-hairline">
-                <p className="text-[11px] font-bold text-stone tracking-[1.5px] uppercase mb-2.5">Email Us</p>
+                <p className="text-[11px] font-bold text-mute tracking-[1.5px] uppercase mb-2.5">Email Us</p>
                 <a href="mailto:mail.bharatorganics@gmail.com" className="text-urvar-green font-bold text-sm break-all">
                   mail.bharatorganics@gmail.com
                 </a>
               </div>
               <div className="bg-canvas px-6 py-5.5 border-b border-hairline">
-                <p className="text-[11px] font-bold text-stone tracking-[1.5px] uppercase mb-2.5">{t.contact.address_heading}</p>
+                <p className="text-[11px] font-bold text-mute tracking-[1.5px] uppercase mb-2.5">{t.contact.address_heading}</p>
                 <p className="text-mute text-sm leading-relaxed">
                   Sewli, Telenipara, Bandipara
                   <br />

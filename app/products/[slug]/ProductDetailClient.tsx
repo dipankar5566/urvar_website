@@ -96,8 +96,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             <h2 className="font-bold text-ink text-lg uppercase tracking-[0.05em] mb-4.5">{t.product_detail.nutrients}</h2>
             <div className="border border-hairline overflow-hidden">
               <div className="grid grid-cols-2 bg-ink">
-                <div className="px-4 py-2.5 text-[11px] font-bold text-white/62 tracking-[1.2px] uppercase">{t.product_detail.parameter}</div>
-                <div className="px-4 py-2.5 text-[11px] font-bold text-white/62 tracking-[1.2px] uppercase">{t.product_detail.value}</div>
+                <div className="px-4 py-2.5 text-[11px] font-bold text-white/85 tracking-[1.2px] uppercase">{t.product_detail.parameter}</div>
+                <div className="px-4 py-2.5 text-[11px] font-bold text-white/85 tracking-[1.2px] uppercase">{t.product_detail.value}</div>
               </div>
               {product.nutrients.map((n, i) => (
                 <div key={i} className={`grid grid-cols-2 border-t border-hairline ${i % 2 === 0 ? "bg-canvas" : "bg-soft-cloud"}`}>
@@ -113,15 +113,15 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             <h2 className="font-bold text-ink text-lg uppercase tracking-[0.05em] mb-4.5">{t.product_detail.dosage}</h2>
             <div className="border border-hairline overflow-hidden">
               <div className="grid grid-cols-2 bg-urvar-earth">
-                <div className="px-4 py-2.5 text-[11px] font-bold text-white/62 tracking-[1.2px] uppercase">{t.product_detail.crop}</div>
-                <div className="px-4 py-2.5 text-[11px] font-bold text-white/62 tracking-[1.2px] uppercase">{t.product_detail.dose}</div>
+                <div className="px-4 py-2.5 text-[11px] font-bold text-white/85 tracking-[1.2px] uppercase">{t.product_detail.crop}</div>
+                <div className="px-4 py-2.5 text-[11px] font-bold text-white/85 tracking-[1.2px] uppercase">{t.product_detail.dose}</div>
               </div>
               {product.dosages.map((d, i) => (
                 <div key={i} className={`grid grid-cols-2 border-t border-hairline ${i % 2 === 0 ? "bg-canvas" : "bg-soft-cloud"}`}>
                   <div className="px-4 py-2.5 text-[13px] text-mute">{d.crop}</div>
                   <div className="px-4 py-2.5">
                     <span className="text-[13px] text-ink font-bold block">{d.dose}</span>
-                    <span className="text-[11px] text-stone block mt-0.5">{d.method}</span>
+                    <span className="text-[11px] text-mute block mt-0.5">{d.method}</span>
                   </div>
                 </div>
               ))}

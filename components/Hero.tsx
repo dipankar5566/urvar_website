@@ -67,7 +67,7 @@ export default function Hero() {
               <p className="font-[family-name:var(--font-campaign)] text-2xl sm:text-3xl text-white leading-none mb-0.5">
                 {s.value}
               </p>
-              <p className="text-[10px] text-white/42 tracking-[1.8px] uppercase">{s.label}</p>
+              <p className="text-[10px] text-white/60 tracking-[1.8px] uppercase">{s.label}</p>
             </div>
           ))}
         </div>

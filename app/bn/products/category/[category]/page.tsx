@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { categoryBySlug, categoryMeta } from "@/lib/categories";
 import bn from "@/messages/bn";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import CategoryClient from "../../../../products/category/[category]/CategoryClient";
 import CategoryJsonLd from "../../../../products/category/[category]/CategoryJsonLd";
 
@@ -15,24 +16,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!category) return {};
 
   const name = bn.products[categoryMeta[category].nameKey];
-  return {
-    title: `${name} – উর্বর ন্যাচারাল`,
+  return pageMeta({
+    lang: "bn",
+    path: `/products/category/${slug}`,
+    title: brandTitle(name, "bn"),
     description: `উর্বর ন্যাচারালের ${name} পরিসর দেখুন — সুস্থ মাটি ও উচ্চ ফলনের জন্য বিজ্ঞানভিত্তিক জৈব ও জৈবিক পণ্য।`,
-    alternates: {
-      canonical: `/bn/products/category/${slug}`,
-      languages: {
-        "en-IN": `/products/category/${slug}`,
-        "bn-IN": `/bn/products/category/${slug}`,
-        "x-default": `/products/category/${slug}`,
-      },
-    },
-    openGraph: {
-      title: `${name} – উর্বর ন্যাচারাল`,
-      description: `উর্বর ন্যাচারালের ${name} পরিসর — বিজ্ঞানভিত্তিক জৈব ও জৈবিক কৃষি উপকরণ।`,
-      locale: "bn_IN",
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-    },
-  };
+    ogDescription: `উর্বর ন্যাচারালের ${name} পরিসর — বিজ্ঞানভিত্তিক জৈব ও জৈবিক কৃষি উপকরণ।`,
+  });
 }
 
 export default async function BnCategoryPage({ params }: Props) {

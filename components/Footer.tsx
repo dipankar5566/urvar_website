@@ -6,7 +6,8 @@ import { useLang } from "@/context/LangContext";
 import { allCategories, categoryMeta } from "@/lib/categories";
 
 export default function Footer() {
-  const { t, localize } = useLang();
+  const { t, lang, localize } = useLang();
+  const year = new Date().getFullYear().toLocaleString(lang === "bn" ? "bn-IN" : "en-IN", { useGrouping: false });
 
   return (
     <footer className="bg-[#104C36] text-white border-t-[3px] border-urvar-green">
@@ -18,14 +19,14 @@ export default function Footer() {
               <Image src="/logo.svg" alt="Urvar Logo" width={26} height={26} className="brightness-0 invert" />
               <span className="font-[family-name:var(--font-campaign)] text-lg tracking-[2px]">URVAR</span>
             </div>
-            <p className="text-white/50 text-[13px] leading-relaxed max-w-[200px]">{t.footer.tagline}</p>
-            <p className="text-white/28 text-xs mt-1.5">Urvar Natural Pvt. Ltd.</p>
+            <p className="text-white/65 text-[13px] leading-relaxed max-w-[200px]">{t.footer.tagline}</p>
+            <p className="text-white/65 text-xs mt-1.5">Urvar Natural Pvt. Ltd.</p>
           </div>
 
           {/* Products / categories */}
           <div>
-            <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.nav.products}</h3>
-            <ul className="space-y-2.5 text-[13px] text-white/58">
+            <h3 className="text-[11px] font-bold text-white/65 tracking-[1.2px] uppercase mb-4">{t.nav.products}</h3>
+            <ul className="space-y-2.5 text-[13px] text-white/70">
               {allCategories.map((cat) => (
                 <li key={cat}>
                   <Link href={localize(`/products/category/${categoryMeta[cat].slug}`)} className="hover:text-white transition-colors">
@@ -38,8 +39,8 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.footer.quick_links}</h3>
-            <ul className="space-y-2.5 text-[13px] text-white/58">
+            <h3 className="text-[11px] font-bold text-white/65 tracking-[1.2px] uppercase mb-4">{t.footer.quick_links}</h3>
+            <ul className="space-y-2.5 text-[13px] text-white/70">
               <li><Link href={localize("/")} className="hover:text-white transition-colors">{t.nav.home}</Link></li>
               <li><Link href={localize("/about")} className="hover:text-white transition-colors">{t.nav.about}</Link></li>
               <li><Link href={localize("/crop-solutions")} className="hover:text-white transition-colors">{t.nav.crops}</Link></li>
@@ -51,8 +52,8 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.nav.resources}</h3>
-            <ul className="space-y-2.5 text-[13px] text-white/58">
+            <h3 className="text-[11px] font-bold text-white/65 tracking-[1.2px] uppercase mb-4">{t.nav.resources}</h3>
+            <ul className="space-y-2.5 text-[13px] text-white/70">
               <li><Link href={localize("/blog")} className="hover:text-white transition-colors">{t.nav.blog}</Link></li>
               <li><Link href={localize("/faqs")} className="hover:text-white transition-colors">{t.nav.faqs}</Link></li>
               <li><Link href={localize("/resources/downloads")} className="hover:text-white transition-colors">{t.nav.downloads}</Link></li>
@@ -62,15 +63,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-[11px] font-bold text-white/30 tracking-[1.2px] uppercase mb-4">{t.footer.contact_info}</h3>
-            <div className="flex flex-col gap-2 text-[13px] text-white/58">
+            <h3 className="text-[11px] font-bold text-white/65 tracking-[1.2px] uppercase mb-4">{t.footer.contact_info}</h3>
+            <div className="flex flex-col gap-2 text-[13px] text-white/70">
               <a href="tel:+919035708943" className="hover:text-white transition-colors">
                 +91 90357 08943
               </a>
               <a href="tel:+918335825566" className="hover:text-white transition-colors">
                 +91 83358 25566
               </a>
-              <span className="leading-relaxed mt-1 text-xs text-white/32">
+              <span className="leading-relaxed mt-1 text-xs text-white/65">
                 Sewli, Telenipara, Bandipara<br />
                 North 24 Parganas, WB – 700121
               </span>
@@ -78,8 +79,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-5 text-center text-xs text-white/28 tracking-[0.3px]">
-          {t.footer.copyright}
+        <div className="border-t border-white/10 mt-12 pt-5 text-center text-xs text-white/65 tracking-[0.3px]">
+          {t.footer.copyright.replace("{year}", year)}
         </div>
       </div>
     </footer>

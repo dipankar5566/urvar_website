@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import Button from "@/components/ui/Button";
 import CropCard from "@/components/crops/CropCard";
 import crops, { seasonOrder } from "@/data/crops";
@@ -15,6 +16,7 @@ export default function CropSolutionsPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.crops.hub_heading, path: "/crop-solutions" }]} />
       <section className="bg-urvar-dark px-4 sm:px-6 lg:px-8 pt-10 pb-8 sm:pt-16 sm:pb-14">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-16">
           <div className="flex flex-col gap-3.5 max-w-[700px]">

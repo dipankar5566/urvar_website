@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allCategories, categoryBySlug, categoryMeta } from "@/lib/categories";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import CategoryClient from "./CategoryClient";
 import CategoryJsonLd from "./CategoryJsonLd";
 
@@ -15,23 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = categoryBySlug(slug);
   if (!category) return {};
 
-  return {
-    title: `${category} – Urvar Natural Pvt. Ltd.`,
+  return pageMeta({
+    lang: "en",
+    path: `/products/category/${slug}`,
+    title: brandTitle(category, "en"),
     description: `Explore Urvar Natural's range of ${category.toLowerCase()} — science-driven organic and biological inputs for healthier soil and higher yields.`,
-    alternates: {
-      canonical: `/products/category/${slug}`,
-      languages: {
-        "en-IN": `/products/category/${slug}`,
-        "bn-IN": `/bn/products/category/${slug}`,
-        "x-default": `/products/category/${slug}`,
-      },
-    },
-    openGraph: {
-      title: `${category} – Urvar Natural`,
-      description: `Explore Urvar Natural's range of ${category.toLowerCase()} — science-driven organic and biological inputs for healthier soil and higher yields.`,
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-    },
-  };
+  });
 }
 
 export default async function CategoryPage({ params }: Props) {

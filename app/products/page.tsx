@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import ProductCard from "@/components/ProductCard";
 import products from "@/data/products";
 import type { Product } from "@/data/products";
@@ -32,6 +33,7 @@ export default function ProductsPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: t.nav.products, path: "/products" }]} />
       <section className="bg-[#104C36] pt-14 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <p className="text-[11px] font-medium text-[#4ade80] tracking-[2px] uppercase mb-3">Our Range</p>

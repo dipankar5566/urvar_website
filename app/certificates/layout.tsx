@@ -1,25 +1,15 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Certificates & Recognitions – Urvar Natural Pvt. Ltd.",
-  description:
-    "Urvar Natural is a DPIIT-recognized Startup India company, MSME/Udyam registered and GST registered. View our government registrations and request documentation for dealership and B2B onboarding.",
-  keywords:
-    "DPIIT recognized startup, MSME registered fertilizer company, Udyam registration, Urvar Natural certificates",
-  alternates: {
-    canonical: "/certificates",
-    languages: {
-      "en-IN": "/certificates",
-      "bn-IN": "/bn/certificates",
-      "x-default": "/certificates",
-    },
-  },
-  openGraph: {
+export const metadata = {
+  ...pageMeta({
+    lang: "en",
+    path: "/certificates",
     title: "Certificates & Recognitions – Urvar Natural Pvt. Ltd.",
     description:
-      "Urvar Natural is a DPIIT-recognized Startup India company, MSME/Udyam registered and GST registered. View our government registrations and request documentation for dealership and B2B onboarding.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-  },
+      "Urvar Natural is DPIIT-recognized under Startup India, MSME/Udyam registered and GST registered. Request documents for dealership or B2B onboarding.",
+  }),
+  keywords:
+    "DPIIT recognized startup, MSME registered fertilizer company, Udyam registration, Urvar Natural certificates",
 };
 
 export default function CertificatesLayout({ children }: { children: React.ReactNode }) {

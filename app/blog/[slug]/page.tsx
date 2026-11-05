@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPublishedPost, listPublishedPosts } from "@/lib/blog/store";
 import { ogImageFor } from "@/lib/blog/types";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import BlogPostClient from "./BlogPostClient";
 import BlogJsonLd from "./BlogJsonLd";
 
@@ -18,24 +19,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPublishedPost(slug);
   if (!post) return {};
 
-  return {
-    title: `${post.en.title} – Urvar Natural Blog`,
+  return pageMeta({
+    lang: "en",
+    path: `/blog/${slug}`,
+    title: brandTitle(post.en.title, "en"),
     description: post.en.excerpt,
-    alternates: {
-      canonical: `/blog/${slug}`,
-      languages: {
-        "en-IN": `/blog/${slug}`,
-        "bn-IN": `/bn/blog/${slug}`,
-        "x-default": `/blog/${slug}`,
-      },
-    },
-    openGraph: {
-      title: post.en.title,
-      description: post.en.excerpt,
-      images: [{ url: ogImageFor(post) }],
-      type: "article",
-    },
-  };
+    ogTitle: post.en.title,
+    image: ogImageFor(post),
+    type: "article",
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {

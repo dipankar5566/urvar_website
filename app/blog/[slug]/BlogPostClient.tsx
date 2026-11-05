@@ -29,7 +29,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
       {/* Hero */}
       <section className="bg-[#104C36] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <nav className="text-[13px] text-white/55 mb-6" aria-label="Breadcrumb">
+          <nav className="text-[13px] text-white/65 mb-6" aria-label="Breadcrumb">
             <Link href={localize("/")} className="hover:text-white">
               {t.nav.home}
             </Link>
@@ -44,7 +44,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
           <h1 className="font-[family-name:var(--font-campaign)] uppercase text-white text-[28px] sm:text-[38px] leading-[1.1]">
             {content.title}
           </h1>
-          <p className="mt-4 text-white/55 text-sm">
+          <p className="mt-4 text-white/65 text-sm">
             {t.blog.by} {post.author} · {dateLabel}
           </p>
         </div>

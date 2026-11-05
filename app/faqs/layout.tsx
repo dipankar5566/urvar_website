@@ -1,25 +1,13 @@
-import type { Metadata } from "next";
 import faqs from "@/data/faqs";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
+  lang: "en",
+  path: "/faqs",
   title: "FAQs – Urvar Natural Pvt. Ltd.",
   description:
     "Frequently asked questions about Urvar Natural's organic fertilizers, bio-stimulants and micronutrients — usage, dosage, dealership and delivery.",
-  alternates: {
-    canonical: "/faqs",
-    languages: {
-      "en-IN": "/faqs",
-      "bn-IN": "/bn/faqs",
-      "x-default": "/faqs",
-    },
-  },
-  openGraph: {
-    title: "FAQs – Urvar Natural Pvt. Ltd.",
-    description:
-      "Frequently asked questions about Urvar Natural's organic fertilizers, bio-stimulants and micronutrients — usage, dosage, dealership and delivery.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+});
 
 const faqJsonLd = {
   "@context": "https://schema.org",

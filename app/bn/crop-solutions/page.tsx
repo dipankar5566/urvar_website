@@ -1,24 +1,11 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
+  lang: "bn",
+  path: "/crop-solutions",
   title: "ফসল সমাধান – উর্বর ন্যাচারাল",
   description:
-    "ধান, গম, আলু, সরিষা ও সবজির জন্য ধাপে ধাপে জৈব পুষ্টি নির্দেশিকা — কৃষি বিশ্ববিদ্যালয়ের গবেষণা থেকে সময়, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।",
-  alternates: {
-    canonical: "/bn/crop-solutions",
-    languages: {
-      "en-IN": "/crop-solutions",
-      "bn-IN": "/bn/crop-solutions",
-      "x-default": "/crop-solutions",
-    },
-  },
-  openGraph: {
-    title: "ফসল সমাধান – উর্বর ন্যাচারাল",
-    description:
-      "ধান, গম, আলু, সরিষা ও সবজির জন্য ধাপে ধাপে জৈব পুষ্টি নির্দেশিকা — কৃষি বিশ্ববিদ্যালয়ের গবেষণা থেকে সময়, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।",
-    locale: "bn_IN",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+    "ধান ও গম থেকে আম ও চা পর্যন্ত ১৩টি ফসলের জন্য ধাপে ধাপে জৈব পুষ্টি নির্দেশিকা, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।",
+});
 
 export { default } from "../../crop-solutions/page";

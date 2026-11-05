@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import crops, { cropBySlug } from "@/data/crops";
 import en from "@/messages/en";
+import { cropMetaDescription } from "@/lib/cropPage";
+import { pageMeta } from "@/lib/seo";
 import CropClient from "./CropClient";
 import CropJsonLd from "./CropJsonLd";
 
@@ -16,26 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const crop = cropBySlug(slug);
   if (!crop) return {};
 
-  const name = en.crops[crop.nameKey];
-  const title = `${name} Fertilizer Schedule | Urvar Natural`;
-  const description = `${en.crops[crop.introKey]} Stage timing from agricultural-university research, with Urvar doses per katha, bigha and acre.`;
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/crop-solutions/${slug}`,
-      languages: {
-        "en-IN": `/crop-solutions/${slug}`,
-        "bn-IN": `/bn/crop-solutions/${slug}`,
-        "x-default": `/crop-solutions/${slug}`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      images: [{ url: crop.image.replace(/\.webp$/, ".jpg") }],
-    },
-  };
+  return pageMeta({
+    lang: "en",
+    path: `/crop-solutions/${slug}`,
+    title: `${en.crops[crop.nameKey]} Fertilizer Schedule | Urvar Natural`,
+    description: cropMetaDescription(crop, "en", en),
+    image: crop.image.replace(/\.webp$/, ".jpg"),
+  });
 }
 
 export default async function CropPage({ params }: Props) {

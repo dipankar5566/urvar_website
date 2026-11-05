@@ -173,7 +173,7 @@ export default function HomePage() {
                 {t.home.why_heading}
               </h2>
             </div>
-            <p className="text-white/45 text-sm max-w-xs leading-relaxed">{t.home.why_sub}</p>
+            <p className="text-white/65 text-sm max-w-xs leading-relaxed">{t.home.why_sub}</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {why.map((w) => (
@@ -182,7 +182,7 @@ export default function HomePage() {
                   {w.num}
                 </div>
                 <h3 className="text-white text-xs font-bold uppercase tracking-[1.8px] mb-2.5">{w.title}</h3>
-                <p className="text-white/52 text-sm leading-relaxed">{w.body}</p>
+                <p className="text-white/65 text-sm leading-relaxed">{w.body}</p>
               </div>
             ))}
           </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
                   <div className="font-[family-name:var(--font-campaign)] text-3xl sm:text-[52px] text-white leading-none">
                     {s.v}
                   </div>
-                  <div className="text-[10px] font-semibold text-white/30 tracking-[1.8px] uppercase mt-1">{s.l}</div>
+                  <div className="text-[10px] font-semibold text-white/60 tracking-[1.8px] uppercase mt-1">{s.l}</div>
                 </div>
               ))}
             </div>

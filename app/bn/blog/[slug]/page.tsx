@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPublishedPost } from "@/lib/blog/store";
 import { ogImageFor } from "@/lib/blog/types";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import BlogPostClient from "../../../blog/[slug]/BlogPostClient";
 import BlogJsonLd from "../../../blog/[slug]/BlogJsonLd";
 
@@ -15,25 +16,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
 
   const content = post.bn ?? post.en;
-  return {
-    title: `${content.title} – উর্বর ন্যাচারাল ব্লগ`,
+  return pageMeta({
+    lang: "bn",
+    path: `/blog/${slug}`,
+    title: brandTitle(content.title, "bn"),
     description: content.excerpt,
-    alternates: {
-      canonical: `/bn/blog/${slug}`,
-      languages: {
-        "en-IN": `/blog/${slug}`,
-        "bn-IN": `/bn/blog/${slug}`,
-        "x-default": `/blog/${slug}`,
-      },
-    },
-    openGraph: {
-      title: content.title,
-      description: content.excerpt,
-      locale: "bn_IN",
-      images: [{ url: ogImageFor(post) }],
-      type: "article",
-    },
-  };
+    ogTitle: content.title,
+    image: ogImageFor(post),
+    type: "article",
+  });
 }
 
 export default async function BnBlogPostPage({ params }: Props) {

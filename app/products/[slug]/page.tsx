@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import products from "@/data/products";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import ProductDetailClient from "./ProductDetailClient";
 import ProductJsonLd from "./ProductJsonLd";
 
@@ -11,23 +12,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
 
-  return {
-    title: `${product.name} – Urvar Natural Pvt. Ltd.`,
+  return pageMeta({
+    lang: "en",
+    path: `/products/${slug}`,
+    title: brandTitle(product.name, "en"),
     description: product.tagline,
-    alternates: {
-      canonical: `/products/${slug}`,
-      languages: {
-        "en-IN": `/products/${slug}`,
-        "bn-IN": `/bn/products/${slug}`,
-        "x-default": `/products/${slug}`,
-      },
-    },
-    openGraph: {
-      title: `${product.name} – Urvar Natural`,
-      description: product.description,
-      images: [{ url: product.image }],
-    },
-  };
+    ogDescription: product.description,
+    image: product.image,
+  });
 }
 
 export function generateStaticParams() {

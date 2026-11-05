@@ -24,6 +24,19 @@ export function cropProductCount(crop: Crop): number {
   return new Set(crop.stages.flatMap((s) => s.products.map((p) => p.slug))).size;
 }
 
+const META_SUFFIX: Record<Lang, string> = {
+  en: " Stage-wise doses per katha, bigha and acre.",
+  bn: " প্রতি কাঠা, বিঘা ও একরে ধাপভিত্তিক মাত্রা।",
+};
+
+export function cropMetaDescription(crop: Crop, lang: Lang, t: Messages): string {
+  const intro = t.crops[crop.introKey];
+  const end = lang === "bn" ? intro.indexOf("।") : intro.indexOf(". ");
+  const first = end === -1 ? intro : intro.slice(0, end + 1);
+  const full = first + META_SUFFIX[lang];
+  return full.length <= 160 ? full : first;
+}
+
 export function cropFaqs(crop: Crop, lang: Lang, t: Messages): { q: string; a: string }[] {
   const name = t.crops[crop.nameKey];
   const productsAnswer = crop.stages

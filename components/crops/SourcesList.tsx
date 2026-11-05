@@ -16,7 +16,7 @@ export default function SourcesList({
         {sources.map((s, i) => (
           <li key={s.id} className="text-[13px] leading-relaxed text-charcoal">
             {i + 1}. {s.citation}{" "}
-            <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-urvar-green hover:text-urvar-dark break-all">
+            <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-urvar-green underline underline-offset-2 hover:text-urvar-dark break-all">
               {s.url.replace(/^https?:\/\//, "")}
             </a>
           </li>

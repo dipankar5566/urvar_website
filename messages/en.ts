@@ -387,7 +387,7 @@ const en = {
     tagline: "Urvar know the needs of the Plants",
     quick_links: "Quick Links",
     contact_info: "Contact Info",
-    copyright: "© 2025 Urvar Natural Pvt. Ltd. All rights reserved.",
+    copyright: "© {year} Urvar Natural Pvt. Ltd. All rights reserved.",
   },
   chat: {
     button_title: "Chat with Kisan Saathi",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import products from "@/data/products";
+import { brandTitle, pageMeta } from "@/lib/seo";
 import ProductDetailClient from "../../../products/[slug]/ProductDetailClient";
 import ProductJsonLd from "../../../products/[slug]/ProductJsonLd";
 
@@ -13,24 +14,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
 
-  return {
-    title: `${product.name} – উর্বর ন্যাচারাল`,
+  return pageMeta({
+    lang: "bn",
+    path: `/products/${slug}`,
+    title: brandTitle(product.name, "bn"),
     description: product.tagline,
-    alternates: {
-      canonical: `/bn/products/${slug}`,
-      languages: {
-        "en-IN": `/products/${slug}`,
-        "bn-IN": `/bn/products/${slug}`,
-        "x-default": `/products/${slug}`,
-      },
-    },
-    openGraph: {
-      title: `${product.name} – উর্বর ন্যাচারাল`,
-      description: product.description,
-      locale: "bn_IN",
-      images: [{ url: product.image }],
-    },
-  };
+    ogDescription: product.description,
+    image: product.image,
+  });
 }
 
 export default async function BnProductDetailPage({ params }: Props) {

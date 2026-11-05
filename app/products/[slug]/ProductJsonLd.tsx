@@ -19,15 +19,6 @@ export default function ProductJsonLd({ product, lang }: { product: Product; lan
       "@type": "Brand",
       name: "Urvar Natural",
     },
-    offers: {
-      "@type": "Offer",
-      url: `${BASE_URL}${prefix}/products/${product.slug}`,
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@type": "Organization",
-        name: "Urvar Natural Pvt. Ltd.",
-      },
-    },
     additionalProperty: product.nutrients.map((n) => ({
       "@type": "PropertyValue",
       name: n.parameter,
@@ -57,10 +48,13 @@ export default function ProductJsonLd({ product, lang }: { product: Product; lan
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
     </>
   );

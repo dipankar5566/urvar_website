@@ -4,10 +4,10 @@ import { cropBySlug } from "@/data/crops";
 import bn from "@/messages/bn";
 import { cropMetaDescription } from "@/lib/cropPage";
 import { pageMeta } from "@/lib/seo";
-import CropClient from "../../../crop-solutions/[crop]/CropClient";
-import CropJsonLd from "../../../crop-solutions/[crop]/CropJsonLd";
+import CropClient from "@/app/(en)/crop-solutions/[crop]/CropClient";
+import CropJsonLd from "@/app/(en)/crop-solutions/[crop]/CropJsonLd";
 
-export { generateStaticParams } from "../../../crop-solutions/[crop]/page";
+export { generateStaticParams } from "@/app/(en)/crop-solutions/[crop]/page";
 
 type Props = { params: Promise<{ crop: string }> };
 

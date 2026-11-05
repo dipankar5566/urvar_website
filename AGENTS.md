@@ -56,6 +56,18 @@ sitemap picks it up automatically (sitemap mirrors every URL under /bn).
 Internal links in client components must go through `localize()` from
 `useLang()` so they stay within the current language tree.
 
+Each language tree has its own root layout so the server HTML carries the
+right `<html lang>`: English routes live in the `app/(en)/` route group
+(the group name is not in the URL) with `app/(en)/layout.tsx`, and
+`app/bn/layout.tsx` is the Bengali root. Both render
+`components/SiteShell.tsx` (fonts, Navbar/Footer, analytics, Organization
+JSON-LD). There is no top-level `app/layout.tsx`, so unmatched URLs use
+`app/global-not-found.tsx`, enabled by `experimental.globalNotFound` in
+`next.config.ts`. `/bn` wrappers import English pages via
+`@/app/(en)/...`. Moving between the trees is a full page load, which the
+language switcher already does. Page metadata goes through `pageMeta()` in
+`lib/seo.ts` (canonical, hreflang, Open Graph, Twitter in one place).
+
 # Video embeds
 
 YouTube videos (e.g. the About page's "Watch Our Story" section) use a

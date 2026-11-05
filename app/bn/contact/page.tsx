@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "পণ্য সম্পর্কে জিজ্ঞাসা, বাল্ক অর্ডার বা ডিলারশিপের জন্য উর্বর ন্যাচারালের সাথে যোগাযোগ করুন। ফোন, WhatsApp বা মেসেজ পাঠান।",
 });
 
-export { default } from "../../contact/page";
+export { default } from "@/app/(en)/contact/page";

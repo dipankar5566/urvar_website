@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "ধান ও গম থেকে আম ও চা পর্যন্ত ১৩টি ফসলের জন্য ধাপে ধাপে জৈব পুষ্টি নির্দেশিকা, সঙ্গে প্রতি কাঠা, বিঘা ও একরে উর্বরের মাত্রা।",
 });
 
-export { default } from "../../crop-solutions/page";
+export { default } from "@/app/(en)/crop-solutions/page";

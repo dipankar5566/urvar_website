@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "উর্বর ন্যাচারাল কীভাবে জৈব সার ও বায়ো-স্টিমুল্যান্ট তৈরি করে — কাঁচামাল সংগ্রহ, কম্পোস্টিং, ফর্মুলেশন, ব্যাচ গুণমান পরীক্ষা ও প্যাকেজিং।",
 });
 
-export { default } from "../../../about/manufacturing-quality/page";
+export { default } from "@/app/(en)/about/manufacturing-quality/page";

@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // EN and BN have separate root layouts (for <html lang>), so unmatched URLs
+  // need app/global-not-found.tsx instead of a single root not-found.
+  experimental: {
+    globalNotFound: true,
+  },
   async redirects() {
     return [
       { source: "/crop-solutions/fruit-crops", destination: "/crop-solutions", permanent: true },

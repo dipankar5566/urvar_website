@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { getPublishedPost } from "@/lib/blog/store";
 import { ogImageFor } from "@/lib/blog/types";
 import { brandTitle, pageMeta } from "@/lib/seo";
-import BlogPostClient from "../../../blog/[slug]/BlogPostClient";
-import BlogJsonLd from "../../../blog/[slug]/BlogJsonLd";
+import BlogPostClient from "@/app/(en)/blog/[slug]/BlogPostClient";
+import BlogJsonLd from "@/app/(en)/blog/[slug]/BlogJsonLd";
 
-export { generateStaticParams } from "../../../blog/[slug]/page";
+export { generateStaticParams } from "@/app/(en)/blog/[slug]/page";
 
 type Props = { params: Promise<{ slug: string }> };
 

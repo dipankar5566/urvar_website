@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deletePostAction } from "@/app/admin/actions";
+import { deletePostAction } from "@/app/(en)/admin/actions";
 
 // Two-step delete (no browser confirm dialog): first click arms it.
 export default function DeletePostButton({ slug }: { slug: string }) {

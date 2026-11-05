@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "মাটির স্বাস্থ্য, ফসলের পুষ্টি, মাইক্রোনিউট্রিয়েন্ট ও জৈব চাষ নিয়ে উর্বর ন্যাচারাল কৃষি টিমের ব্যবহারিক গাইড।",
 });
 
-export { default } from "../../blog/page";
+export { default } from "@/app/(en)/blog/page";

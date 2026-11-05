@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "উর্বর ন্যাচারালের জৈব সার ও বায়ো-স্টিমুল্যান্টের পরিসর দেখুন — ভার্মিকম্পোস্ট, PROM, হিউমিক অ্যাসিড, জিঙ্ক EDTA, বোরন EDTA এবং আরও অনেক কিছু।",
 });
 
-export { default } from "../../products/page";
+export { default } from "@/app/(en)/products/page";

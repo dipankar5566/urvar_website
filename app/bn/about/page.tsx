@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "২০২৩ সালে প্রতিষ্ঠিত পশ্চিমবঙ্গভিত্তিক জৈব সার কোম্পানি উর্বর ন্যাচারাল — টেকসই কৃষি ও মাটির স্বাস্থ্য পুনরুদ্ধারে নিবেদিত। MSME ও Startup India স্বীকৃত।",
 });
 
-export { default } from "../../about/page";
+export { default } from "@/app/(en)/about/page";

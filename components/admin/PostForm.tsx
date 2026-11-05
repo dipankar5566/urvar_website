@@ -1,7 +1,7 @@
 "use client";
 
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
-import { savePostAction } from "@/app/admin/actions";
+import { savePostAction } from "@/app/(en)/admin/actions";
 import type { Post } from "@/lib/blog/types";
 import RichTextEditor from "./RichTextEditor";
 import { uploadImage } from "./uploadImage";

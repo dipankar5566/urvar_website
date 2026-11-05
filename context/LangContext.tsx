@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext } from "react";
 import { usePathname } from "next/navigation";
 import en from "@/messages/en";
 import bn from "@/messages/bn";
@@ -30,10 +30,6 @@ const LangContext = createContext<LangContextType>({
 export function LangProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() ?? "/";
   const lang: Lang = /^\/bn(\/|$)/.test(pathname) ? "bn" : "en";
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
 
   function setLang(l: Lang) {
     if (l === lang || typeof window === "undefined") return;

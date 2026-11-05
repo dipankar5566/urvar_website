@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import products from "@/data/products";
 import { brandTitle, pageMeta } from "@/lib/seo";
-import ProductDetailClient from "../../../products/[slug]/ProductDetailClient";
-import ProductJsonLd from "../../../products/[slug]/ProductJsonLd";
+import ProductDetailClient from "@/app/(en)/products/[slug]/ProductDetailClient";
+import ProductJsonLd from "@/app/(en)/products/[slug]/ProductJsonLd";
 
-export { generateStaticParams } from "../../../products/[slug]/page";
+export { generateStaticParams } from "@/app/(en)/products/[slug]/page";
 
 type Props = { params: Promise<{ slug: string }> };
 

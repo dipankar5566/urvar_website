@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { categoryBySlug, categoryMeta } from "@/lib/categories";
 import bn from "@/messages/bn";
 import { brandTitle, pageMeta } from "@/lib/seo";
-import CategoryClient from "../../../../products/category/[category]/CategoryClient";
-import CategoryJsonLd from "../../../../products/category/[category]/CategoryJsonLd";
+import CategoryClient from "@/app/(en)/products/category/[category]/CategoryClient";
+import CategoryJsonLd from "@/app/(en)/products/category/[category]/CategoryJsonLd";
 
-export { generateStaticParams } from "../../../../products/category/[category]/page";
+export { generateStaticParams } from "@/app/(en)/products/category/[category]/page";
 
 type Props = { params: Promise<{ category: string }> };
 

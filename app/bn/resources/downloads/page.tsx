@@ -8,4 +8,4 @@ export const metadata = pageMeta({
     "উর্বর ন্যাচারালের পণ্য ক্যাটালগ, ডিলার কিট ও টেকনিক্যাল ডেটাশিট (TDS) ডাউনলোড করুন, অথবা WhatsApp-এ কপি চান।",
 });
 
-export { default } from "../../../resources/downloads/page";
+export { default } from "@/app/(en)/resources/downloads/page";

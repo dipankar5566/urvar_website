@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { logoutAction } from "@/app/admin/actions";
+import { logoutAction } from "@/app/(en)/admin/actions";
 
 export default function AdminHeader() {
   return (

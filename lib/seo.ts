@@ -34,7 +34,9 @@ export function pageMeta({
   ogDescription?: string;
 }): Metadata {
   const canonical = lang === "bn" ? bnPath(path) : path;
-  const images = [image === DEFAULT_IMAGE ? { url: image, width: 1200, height: 630 } : { url: image }];
+  const images = [
+    image === DEFAULT_IMAGE ? { url: image, width: 1200, height: 630, alt: ogTitle } : { url: image, alt: ogTitle },
+  ];
   return {
     title,
     description,

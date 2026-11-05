@@ -178,7 +178,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {why.map((w) => (
               <div key={w.num} className="pl-5 border-l border-white/15">
-                <div className="font-[family-name:var(--font-campaign)] text-urvar-green text-5xl sm:text-[80px] leading-none mb-4">
+                <div className="font-[family-name:var(--font-campaign)] text-[#4ade80] text-5xl sm:text-[80px] leading-none mb-4">
                   {w.num}
                 </div>
                 <h3 className="text-white text-xs font-bold uppercase tracking-[1.8px] mb-2.5">{w.title}</h3>

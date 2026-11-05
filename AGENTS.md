@@ -6,7 +6,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Deployment
 
-Live at https://www.urvarindia.com and https://urvarindia.com, served as a
+Live at https://urvarindia.com (canonical host). `www.urvarindia.com` and
+`http://` 301 to it via Cloudflare (Rules → Redirect Rules "Redirect from
+WWW to root", and SSL/TLS → Edge Certificates → Always Use HTTPS), so code
+should always build URLs from `SITE_URL` in `lib/seo.ts`. Served as a
 full Next.js server (`next start`) run under PM2 on a local Windows PC,
 fronted by a dedicated Cloudflare Tunnel (`urvar-website`, Windows service
 `CloudflaredWebsite`) — the same pattern used by the other Urvar apps on
@@ -22,10 +25,20 @@ locked, so `npm ci` dies with `EPERM ... unlink` *after* it has already
 deleted part of `node_modules` (the live process keeps serving from memory,
 but any restart would then fail). Until the script is fixed, deploy
 manually in this order: `git pull` → `pm2 stop urvar-website` → `npm ci`
-→ `npm run build` → `pm2 start urvar-website` (~2–3 min downtime). Never
-build or `npm ci` in `D:\urvar_website` for testing — it is the live
-folder; build a copy elsewhere (with its own `npm ci`, since Turbopack
-rejects a junctioned `node_modules`).
+→ `npm run build` → `pm2 start urvar-website` (~2–3 min downtime). Skip
+`npm ci` when `package-lock.json` didn't change — the build alone takes
+~20 s of downtime and avoids the EPERM trap. Never build or `npm ci` in
+`D:\urvar_website` for testing — it is the live folder; build a copy
+elsewhere (with its own `npm ci`, since Turbopack rejects a junctioned
+`node_modules`), e.g. `robocopy` excluding `node_modules`, `.next`, `.git`
+and `.env.local`.
+
+`tsconfig.json` includes the generated `.next/types` and
+`.next/dev/types`. After moving or renaming routes those go stale and the
+build's type-check fails on modules that no longer exist, so before
+building in the live folder run `npx next typegen` (regenerates route types
+without building) and move aside any old `.next/dev` left by `next dev`.
+`npx tsc --noEmit` should report 0 errors before you `pm2 stop`.
 
 The previous BigRock cPanel static-export deployment (no Node.js
 available there) is retired as the live host but kept as a documented
@@ -47,7 +60,9 @@ Language is URL-based so Bengali pages are crawlable static HTML: English
 lives at `/`, Bengali at `/bn/*`. `context/LangContext.tsx` derives the
 language from `usePathname()` (no localStorage, no client toggle state) —
 this makes Navbar/Footer localize automatically and bakes Bengali text
-into the prerendered HTML under `out/bn/`. The pages in `app/bn/**` are
+into the prerendered HTML for every `/bn` route. The Bengali home is `/bn`
+with no trailing slash (Next 308-redirects `/bn/` → `/bn`), and canonical,
+hreflang, sitemap and `localize("/")` all use `/bn`. The pages in `app/bn/**` are
 thin server wrappers that re-export the English page component and supply
 Bengali metadata + hreflang alternates (`en-IN`/`bn-IN`/`x-default`);
 English metadata carries the same hreflang pairs. When adding a page or
@@ -67,6 +82,35 @@ JSON-LD). There is no top-level `app/layout.tsx`, so unmatched URLs use
 `@/app/(en)/...`. Moving between the trees is a full page load, which the
 language switcher already does. Page metadata goes through `pageMeta()` in
 `lib/seo.ts` (canonical, hreflang, Open Graph, Twitter in one place).
+
+Anything server-rendered that differs by language must not hide behind a
+plain `export { default } from` re-export, because the English component
+would render on the Bengali page. JSON-LD components take a `lang` prop
+(`CropJsonLd`, `BlogJsonLd`, `ProductJsonLd`, `CategoryJsonLd`), and the
+`/bn` wrappers for crop, blog, product and category detail pages define
+their own default export passing `lang="bn"`. Client components can read
+`useLang()` instead (e.g. `components/BreadcrumbJsonLd.tsx`). Known gap:
+`data/products.ts` is English-only, so `/bn/products/*` shows English
+product text and shares descriptions with the English pages.
+
+# SEO conventions
+
+- Titles ≤ 60 chars: wrap dynamic titles in `brandTitle()` (adds
+  "| Urvar Natural" only when it fits). Descriptions ≤ 160 chars.
+- Structured data: one `<script type="application/ld+json">` per object,
+  `JSON.stringify(...).replace(/</g, "\\u003c")`, URLs from `SITE_URL`.
+  Section pages get a `BreadcrumbList` via `components/BreadcrumbJsonLd.tsx`
+  (render it in the page component, not a layout — section layouts also
+  wrap detail pages that emit their own breadcrumb). Product schema has no
+  `offers`: prices aren't public, and a price-less Offer is a Search
+  Console error.
+- `app/sitemap.ts` sets `lastModified` only on blog posts (from
+  `updatedAt`); a build timestamp on static pages would be noise.
+- Contrast (WCAG AA): the brand green token is `#007A42`, darkened for
+  small text on light backgrounds; use `text-[#4ade80]` for green accents
+  on dark sections. Small white text needs at least `text-white/65` on the
+  dark greens (`#104C36`, `#0f3d28`) and `text-white/60` on `bg-ink`. Use
+  `text-mute`, not `text-stone`, for small grey text on white.
 
 # Video embeds
 
@@ -99,5 +143,11 @@ placeholder); admin pages must stay dynamic — `isAdmin()` reads cookies
 first, otherwise `next build` (no env vars) prerenders them as a permanent
 redirect to login. First-run seeding writes to a temp folder and renames
 it into place so parallel build workers never read a half-seeded store.
+Each post has an optional `bn` block (title, excerpt, html) edited through
+the Bengali fields in the admin form; `/bn/blog/*` falls back to English
+when it's missing. To change live posts outside the admin, back up
+`storage/blog/posts/` first and write atomically (temp file + rename, as
+`writePost()` in `lib/blog/store.ts` does), then rebuild or save via admin
+so the cached pages refresh.
 User guide:
 `docs/blog-admin.md`.

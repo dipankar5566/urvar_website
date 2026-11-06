@@ -40,6 +40,11 @@ building in the live folder run `npx next typegen` (regenerates route types
 without building) and move aside any old `.next/dev` left by `next dev`.
 `npx tsc --noEmit` should report 0 errors before you `pm2 stop`.
 
+Google Analytics (GA4, direct gtag.js via `components/GoogleAnalytics.tsx`)
+is enabled by `NEXT_PUBLIC_GA_ID=G-…` in `.env.local` on the hosting PC.
+It is inlined at build time, so changing it needs `npm run build`, not
+just a PM2 restart. Custom events go through `track()` in `lib/analytics.ts`.
+
 The previous BigRock cPanel static-export deployment (no Node.js
 available there) is retired as the live host but kept as a documented
 fallback — see `docs/deployment-bigrock-cloud.md` (superseded) and
